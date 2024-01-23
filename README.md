@@ -6,15 +6,10 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-<<<<<<< HEAD
+
 * Hi, my name is Aira! I'm super excited to begin this project! With some great new ideas, I'm looking forward to seeing how everything turns out.
-* ...
-* ...
-=======
 * hi my name is polina i like to sleep
-* ...
 * Hadrian. Hello :D
->>>>>>> 131920834f10119ea5cb5b1ef1f35ba12d6b45c2
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
