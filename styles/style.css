@@ -8,10 +8,6 @@
     background-color: #ccdbfd;
 }
 
-.no-background{
-   mix-blend-mode:multiply
-}
-
 .login-button{
     background-color:lightskyblue;
     color:black;
@@ -36,6 +32,8 @@
     box-shadow: none !important;
 }
 
+
+
 .nav-link {
     color: black !important;
     font-weight: 500 !important;
@@ -43,6 +41,9 @@
     
 }
 
+.col-md-4 {
+    margin-bottom: 0;
+}
 
 .nav-link:hover {
     color: grey !important;
