@@ -13,7 +13,7 @@
 }
 
 .login-button{
-    background-color:lightskyblue;
+    background-color:#acbea9;
     color:black;
     font-size: 14px;
     padding:8px 20px;
@@ -43,7 +43,15 @@
     
 }
 
-
+.startedbtn{
+    background-color: #338fc2;
+    color:black;
+    font-size: 15px;
+    padding:8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
 .nav-link:hover {
     color: grey !important;
 }
