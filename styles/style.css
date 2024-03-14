@@ -41,7 +41,6 @@
     
 }
 
-<<<<<<< HEAD
 .startedbtn{
     background-color: #338fc2;
     color:black;
@@ -51,12 +50,10 @@
     text-decoration: none;
     transition: 0.3s background-color;
 }
-=======
 .col-md-4 {
     margin-bottom: 0;
 }
 
->>>>>>> b148b2302f0c8f72bd93496761dcdc295057a989
 .nav-link:hover {
     color: grey !important;
 }
