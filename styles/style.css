@@ -9,7 +9,7 @@
 }
 
 .login-button{
-    background-color:lightskyblue;
+    background-color:#acbea9;
     color:black;
     font-size: 14px;
     padding:8px 20px;
@@ -41,10 +41,22 @@
     
 }
 
+<<<<<<< HEAD
+.startedbtn{
+    background-color: #338fc2;
+    color:black;
+    font-size: 15px;
+    padding:8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+=======
 .col-md-4 {
     margin-bottom: 0;
 }
 
+>>>>>>> b148b2302f0c8f72bd93496761dcdc295057a989
 .nav-link:hover {
     color: grey !important;
 }
