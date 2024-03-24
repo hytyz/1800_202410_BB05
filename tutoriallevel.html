@@ -15,7 +15,7 @@
     <!-- Other libraries go here -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/login.css">
 
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -39,62 +39,49 @@ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cD
     <!-- Stuff for body goes here -->
     <nav id="navbarPlaceholder"></nav>
 
-    <div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Tutorials</h5>
-        <p class="card-text">Learn about technology through discussions and video tutorials.</p>
-        <a href="./tutoriallevel.html" class="btn btn-primary">Start</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Practices</h5>
-        <p class="card-text">Learn about technology by working through activities.</p>
-        <a href="#" class="btn btn-primary">Start</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Quiz</h5>
-          <p class="card-text">Check your understanding about technology.</p>
-          <a href="./quizlevel.html" class="btn btn-primary">Start</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Progress</h5>
-          <p class="card-text">Check your performance in your learning journey.</p>
-          <a href="progress.html" class="btn btn-primary">Start</a>
-        </div>
-      </div>
-    </div>
-  </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-   
-       
+    <h1 style="text-align: center;">Tutorial</h1>
+    <br>
+    <h3 style="text-align: center;">Select Level</h3>
+    <br>
+    <div class="list-group">
+        <a id="beginnerlevel" href="./beginnerleveltutorial.html" class="list-group-item list-group-item-action">
+            Beginner Pack
+        </a>
+        <a id="elementaryLevel" href="#" class="list-group-item list-group-item-action">Elementary Pack</a>
+        <a id="intermediateLevel" href="#" class="list-group-item list-group-item-action">Intermediate Pack</a>
+        <a id="advancedLevel" href="#" class="list-group-item list-group-item-action">Advanced Pack</a>
+    </div>
 
+
+
+
+    <footer class="navbar justify-content-evenly bg-lightblue fixed-bottom">
+        <div class="container py-3">
+            <span class="material-icons">grade</span>
+            <span class="material-icons">book</span>
+            <span class="material-icons">assignment</span>
+            <span class="material-icons">account circle</span>
+        </div>
+    </footer>
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-    <script src="./scripts/firebaseAPI.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/authentication.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+        <script src="./scripts/firebaseAPI.js"></script>
+        <script src="./scripts/skeleton.js"></script>
+        <script src="./scripts/authentication.js"></script>
+        <script src="./scripts/script.js"></script>
 </body>
 
 </html>

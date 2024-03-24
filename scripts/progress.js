@@ -8,7 +8,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         subcollectionNames.forEach(function(subcollectionName) {
             
             var subcollectionHeading = document.createElement('h3');
-            subcollectionHeading.textContent = subcollectionName.charAt(0).toUpperCase() + subcollectionName.slice(1); // Capitalize the first letter
+            subcollectionHeading.textContent = subcollectionName.charAt(0).toUpperCase() + subcollectionName.slice(1);
             
             subcollectionsList.appendChild(subcollectionHeading);
 
