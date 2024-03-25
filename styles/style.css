@@ -79,9 +79,40 @@
 }
 
 .row {
-    margin: 100px;
+    margin: 0 100px 100px 100px;
 }
 		
 .card {
     margin-bottom: 10px;
 } 
+
+.display-4 {
+    font-size: 4.5rem;
+    font-weight: 500;
+}
+
+.material-icons:nth-child(1) {
+    padding-left:5%;
+}
+
+.material-icons:nth-child(4) {
+    padding-right:5%;
+}
+
+.p-5 {
+    margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 568px){
+    .row {
+        margin: 0 100px 0 100px;
+    }
+
+    .row:nth-child(4){
+        margin: 0 100px 100px 100px;
+    }
+
+    .p-5 {
+        padding-bottom: 1rem !important;
+    }
+}
