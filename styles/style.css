@@ -85,6 +85,10 @@
 .card {
     margin-bottom: 10px;
 } 
+.responsive {
+    width: 100%;
+    height: auto;
+  }
 
 .display-4 {
     font-size: 4.5rem;
