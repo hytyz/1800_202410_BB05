@@ -48,15 +48,27 @@ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cD
     <h1 style="text-align: center;">Quizzes</h1>
     <br>
     <h3 style="text-align: center;">Select Level of Difficulty</h3>
-    <br>
-    <div class="list-group">
-        <a id="beginnerlevel" href="./beginnerlevel.html" class="list-group-item list-group-item-action">
+    <!-- <div class="list-group">
+        <a id="beginnerlevel" href="#" class="list-group-item list-group-item-action">
             Beginner Pack
         </a>
         <a id="elementaryLevel" href="#" class="list-group-item list-group-item-action">Elementary Pack</a>
         <a id="intermediateLevel" href="#" class="list-group-item list-group-item-action">Intermediate Pack</a>
         <a id="advancedLevel" href="#" class="list-group-item list-group-item-action">Advanced Pack</a>
-    </div>
+    </div> -->
+    
+        <div id="level-go-here" class="row row-cols-auto">
+        </div>
+
+    <template id="quizLevelTemplate">
+        <div class="card py-2 mx-2" style="width: 18rem">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <br />
+                <a class="btn btn-primary card-href">Select</a>
+            </div>
+        </div>
+    </template>
 
 
 
@@ -82,6 +94,7 @@ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cD
         <script src="./scripts/skeleton.js"></script>
         <script src="./scripts/authentication.js"></script>
         <script src="./scripts/script.js"></script>
+        <script src="./scripts/quizlevel.js"></script>
 </body>
 
 </html>

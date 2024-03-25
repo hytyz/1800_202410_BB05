@@ -89,3 +89,17 @@
     width: 100%;
     height: auto;
   }
+
+
+#quiz-topic-list a {
+    font-size: 30px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6; 
+    padding: 8px;
+}
+#quiz-topic-list a:first-child{
+    border-top: 1px solid #dee2e6; 
+}
+#quiz-topic-list a:hover {
+    background-color: #ccdbfd; 
+}
