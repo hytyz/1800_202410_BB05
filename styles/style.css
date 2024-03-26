@@ -141,6 +141,24 @@
     margin-bottom: 2rem;
 }
 
+#tutorial-topic-list a {
+    font-size: 30px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6; 
+    padding: 8px;
+}
+#tutorial-topic-info{
+    font-size: 20px;
+    text-align: center;
+    justify-content:center ;
+}
+#tutorial-topic-list a:first-child{
+    border-top: 1px solid #dee2e6; 
+}
+#tutorial-topic-list a:hover {
+    background-color: #ccdbfd; 
+}
+
 @media only screen and (max-width: 980px){
 
     .row:nth-child(4){
@@ -171,3 +189,5 @@
         padding-bottom: 5%;
     }
 }
+
+
