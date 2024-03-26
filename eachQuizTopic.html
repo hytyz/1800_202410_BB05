@@ -35,14 +35,52 @@
     <br>
     
     
-    <h1 style="text-align: center;"><span id="levelName">this quiz level</span></h1>
+    <h2 style="text-align: center;"><span id="topicTitle">this topic</span></h1>
    
-    <h3 style="text-align: center;">Select a topic</h3>
     
-    <div id="topicTitle"></div>
 
+    <div class="container">
+    <div id="quiz-topic-info">
+        <p>Number of items: 5</p>
+        <p>Time Limit: No time limit</p>
+        <p>Number of Attempts: 5</p>
+        <p>Progress: 1/5</p>
 
-    <div id="quiz-topic-info"></div>
+        <a class="btn btn-primary card-href">Start the quiz!</a>
+    </div>
+    </div>
+
+    
+    <hr>
+
+    <div id="quiz-topic-review">
+        <h3>How is the quiz?</h3>
+        <button class="btn btn-primary" onclick="saveTopicReviewDocumentIDAndRedirect()">Click here to share your thoughts!</button>
+        <div class="container">
+            <br>
+            <h4>Reviews:</h4>
+            <div id="details-go-here"></div>
+            <!-- Here is the container for cards with horizontal scrolling -->
+            <div class="card-container">
+                <div id="reviewCardGroup" class="row row-cols-auto">
+                    <!-- Add your card templates here -->
+                    <template id="reviewCardTemplate">
+                        <div class="card bg-secondary">
+                            <img class="card-img-top">
+                            <div class="card-body bg-light">
+                                <h5 class="title">placeholder</h5>
+                                <p class="star-rating"></p>
+                                <p class="time">placeholder</p>
+                                <p class="level">placeholder</p>
+                                <br>
+                                <p class="description">This card has supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
 
         
     
@@ -62,7 +100,6 @@
         <script src="./scripts/skeleton.js"></script>
         <script src="./scripts/authentication.js"></script>
         <script src="./scripts/script.js"></script>
-
         <script src="./scripts/eachQuizTopic.js"></script>
 </body>
 

@@ -106,7 +106,6 @@
     height: auto;
   }
 
-<<<<<<< HEAD
 
 #quiz-topic-list a {
     font-size: 30px;
@@ -114,13 +113,17 @@
     border-bottom: 1px solid #dee2e6; 
     padding: 8px;
 }
+#quiz-topic-info{
+    font-size: 20px;
+    text-align: center;
+    justify-content:center ;
+}
 #quiz-topic-list a:first-child{
     border-top: 1px solid #dee2e6; 
 }
 #quiz-topic-list a:hover {
     background-color: #ccdbfd; 
 }
-=======
 .display-4 {
     font-size: 4.5rem;
     font-weight: 500;
@@ -168,4 +171,3 @@
         padding-bottom: 5%;
     }
 }
->>>>>>> 811f0dbed92742e3b78abd04f7cabdf6cf0e464e

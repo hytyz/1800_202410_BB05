@@ -24,9 +24,10 @@ function displayQuizLevel() {
       
                 db.collection("level").doc(ID).collection("quiz").get().then((querySnapshot) => {
                   querySnapshot.forEach((doc) => {
-                      var docID = doc.ID2;
+                    var docID = ID;  
+                    var docID2 = doc.id;
                       var topicLink = document.createElement("a");
-                      topicLink.href= "#";
+                      topicLink.href= "eachQuizTopic.html?docID="+docID+"=docID2="+docID2;
                       topicLink.className = "list-group-item list-group-item-action btn";
                       topicLink.textContent = doc.data().title;
                       topicListContainer.appendChild(topicLink);
