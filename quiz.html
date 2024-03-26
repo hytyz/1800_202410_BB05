@@ -41,8 +41,7 @@
    
     <nav id="navbarPlaceholder"></nav>
 
-    <br>
-    <br>
+
 
     <div class="container mt-5">
         <div class="d-flex justify-content-center row">
@@ -50,40 +49,36 @@
                 <div class="border">
                     <div class="question bg-white p-3 border-bottom">
                         <div class="d-flex flex-row justify-content-between align-items-center mcq">
-                            <h4>MCQ Quiz</h4><span>(1 of 5)</span>
+                            <h4>MCQ Quiz</h4>
                         </div>
                     </div>
                     <div class="question bg-white p-3 border-bottom">
                         <div class="d-flex flex-row align-items-center question-title">
                             <h3 class="text-danger">Q.</h3>
-                            <h5 class="mt-1 ml-2">What does "app" stand for in the context of smartphones?/h5>
+                            <h5 id="quizQuestion" class="mt-1 ml-2">What does "app" stand for in the context of smartphones?</h5>
                         </div>
                         <div class="ans ml-2">
                             <label class="radio"> <input type="radio" name="choice1" value="choice1">
-                                <span>Application</span>
+                                <span id="chocie1">Application</span>
                             </label>
                         </div>
                         <div class="ans ml-2">
-                            <label class="radio"> <input type="radio" name="choice2" value="choice2"> <span>Apple</span>
+                            <label class="radio"> <input type="radio" name="choice2" value="choice2">
+                                <span id="chocie2">Apple</span>
                             </label>
                         </div>
                         <div class="ans ml-2">
                             <label class="radio"> <input type="radio" name="choice3" value="choice3">
-                                <span>Apprehend</span>
+                                <span id="chocie3">Apprehend</span>
                             </label>
                         </div>
                         <div class="ans ml-2">
                             <label class="radio"> <input type="radio" name="choice4" value="choice4">
-                                <span>Appraisal</span>
+                                <span id="chocie4">Appraisal</span>
                             </label>
                         </div>
                     </div>
-                    <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white"><button
-                            class="btn btn-primary d-flex align-items-center btn-danger" type="button"><i
-                                class="fa fa-angle-left mt-1 mr-1"></i>&nbsp;previous</button><button
-                            class="btn btn-primary border-success align-items-center btn-success" type="button">Next<i
-                                class="fa fa-angle-right ml-2"></i></button></div>
-                </div>
+                    
             </div>
         </div>
     </div>
@@ -105,7 +100,7 @@
         <script src="./scripts/firebaseAPI.js"></script>
         <script src="./scripts/skeleton.js"></script>
         <script src="./scripts/authentication.js"></script>
-        <script src="./scripts/script.js"></script>
+        <script src="./scripts/quiz.js"></script>
 </body>
 
 </html>
