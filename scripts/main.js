@@ -55,7 +55,7 @@ function writeMenu() {
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("menuCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
 
-    db.collection("menu").get()   //the collection called "hikes"
+    db.collection("menu").orderBy("code").get()   //the collection called "hikes"
         .then(allMenu=> {
             //var i = 1;  //Optional: if you want to have a unique ID for each hike
             allMenu.forEach(doc => {

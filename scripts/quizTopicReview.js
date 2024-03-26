@@ -63,4 +63,3 @@ function writeReview() {
         window.location.href = 'quizTopicReview.html?docID='+docID+'=docID2='+docID2;
     }
 }
-writeReview()

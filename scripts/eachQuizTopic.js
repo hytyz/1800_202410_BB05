@@ -12,9 +12,13 @@
       db.collection("level").doc(ID).collection("quiz").doc(ID2).get().then( doc => {
         thisTopic = doc.data();
         topicTitle = doc.data().title;
+        var docID = ID;  
+                    var docID2 = ID2;
         
         // only populate title, and image
         document.getElementById( "topicTitle" ).innerHTML = topicTitle;
+
+        document.getElementById( "takeQuiz" ).href = "quiz.html?docID="+docID+"=docID2="+docID2;
 
         });
    
