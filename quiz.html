@@ -41,8 +41,19 @@
    
     <nav id="navbarPlaceholder"></nav>
 
+    <div class="container-fluid bg-light text-dark p-5">
+        <div class="container bg-light p-5">
+            <h1 style="text-align: center;">Quizzes</h1>
+              <div class="container">  
+                <div class="container">
+                    <div id="questionBank-go-here" class="row row-cols-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
+    <template id="questionBankTemplate">
     <div class="container mt-5">
         <div class="d-flex justify-content-center row">
             <div class="col-md-10 col-lg-10">
@@ -55,26 +66,26 @@
                     <div class="question bg-white p-3 border-bottom">
                         <div class="d-flex flex-row align-items-center question-title">
                             <h3 class="text-danger">Q.</h3>
-                            <h5 id="quizQuestion" class="mt-1 ml-2">What does "app" stand for in the context of smartphones?</h5>
+                            <h5 class="quizQuestion mt-1 ml-2">What does "app" stand for in the context of smartphones?</h5>
                         </div>
-                        <div class="ans ml-2">
+                        <div class="chocie1 ans ml-2">
                             <label class="radio"> <input type="radio" name="choice1" value="choice1">
-                                <span id="chocie1">Application</span>
+                                <span>Application</span>
                             </label>
                         </div>
-                        <div class="ans ml-2">
+                        <div class="chocie2 ans ml-2">
                             <label class="radio"> <input type="radio" name="choice2" value="choice2">
-                                <span id="chocie2">Apple</span>
+                                <span>Apple</span>
                             </label>
                         </div>
-                        <div class="ans ml-2">
+                        <div class="chocie3 ans ml-2">
                             <label class="radio"> <input type="radio" name="choice3" value="choice3">
-                                <span id="chocie3">Apprehend</span>
+                                <span>Apprehend</span>
                             </label>
                         </div>
-                        <div class="ans ml-2">
+                        <div class="chocie4 ans ml-2">
                             <label class="radio"> <input type="radio" name="choice4" value="choice4">
-                                <span id="chocie4">Appraisal</span>
+                                <span>Appraisal</span>
                             </label>
                         </div>
                     </div>
@@ -82,6 +93,8 @@
             </div>
         </div>
     </div>
+    </div>
+</template>
 
 
 
