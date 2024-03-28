@@ -8,7 +8,6 @@ function displayTutorialLevel() {
         .doc( ID )
         .get()
         .then( doc => {
-            thisHike = doc.data();
             levelName = doc.data().levelName;
             
             // only populate title, and image
@@ -27,7 +26,7 @@ function displayTutorialLevel() {
                       var docID = ID;   
                       var docID2 = doc.id;
                         var topicLink = document.createElement("a");
-                        topicLink.href= "eachTutorialTopic.html?docID="+docID+"=docID2="+docID2;
+                        topicLink.href= "tutorialArticle.html?docID="+docID+"&docID2="+docID2;
                         topicLink.className = "list-group-item list-group-item-action btn";
                         topicLink.textContent = doc.data().title;
                         topicListContainer.appendChild(topicLink);
