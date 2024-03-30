@@ -9,17 +9,30 @@ function displayTutorialArticle() {
         if (docSnapshot.exists) {
             var article = docSnapshot.data().article;
             var articleContent = document.createElement("div");
-            
-            article = article.replace(/\*\*\*(.*?)\*\*\*/g, '<br><h2>$1</h2>'); 
-            article = article.replace(/\-\-(.*?)\-\-/g, '<br><br><h4>$1</h4>'); 
-            article = article.replace(/\*(.*?)\*/g, '<h5>$1</h5>'); 
+
+            article = article.replace(/\*\*\*(.*?)\*\*\*/g, '<br><h2>$1</h2>');
+            article = article.replace(/\-\-(.*?)\-\-/g, '<br><br><h4>$1</h4>');
+            article = article.replace(/\*(.*?)\*/g, '<h5>$1</h5>');
 
             articleContent.innerHTML = article;
             articleContent.style.fontSize = '20px';
 
             tutorialArticleContainer.appendChild(articleContent);
+
         }
     });
+
+    var doneButtonContainer = document.getElementById("done-button");
+    var doneButton = document.createElement("button");
+    doneButton.classList.add("btn", "btn-primary", "btn-lg");
+    doneButton.textContent = "Done";
+    doneButtonContainer.appendChild(doneButton);
+
+    doneButton.addEventListener("click", function () {
+        
+        window.location.href = "eachTutorialLevel.html?docID=" + ID;
+    });
+
 }
 
 displayTutorialArticle();
