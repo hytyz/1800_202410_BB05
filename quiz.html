@@ -19,18 +19,18 @@
 
 </head>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
 <body>
 
@@ -38,18 +38,22 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-   
+
     <nav id="navbarPlaceholder"></nav>
 
     <div class="container-fluid bg-light text-dark p-5">
         <div class="container bg-light p-5">
             <h1 style="text-align: center;">Quizzes</h1>
-              <div class="container">  
+            <div class="container">
                 <div class="container">
                     <div id="questionBank-go-here" class="row-cols-auto">
                     </div>
                     <br>
-                    <div class="d-flex flex-row justify-content-between align-items-center p-3"><button class="btn btn-primary d-flex align-items-center btn-danger" type="button"><i class="fa fa-angle-left mt-1 mr-1"></i>Go</button><button class="btn btn-primary border-success align-items-center btn-success" type="button" onclick="myAnswers()">Submit<i class="fa fa-angle-right ml-2"></i></button></div>
+                    <div class="d-flex flex-row justify-content-between align-items-center p-3"><button
+                            class="btn btn-primary d-flex align-items-center btn-danger" type="button">
+                            <i class="fa fa-angle-left mt-1 mr-1">Go</i></button><button
+                            class="btn btn-primary border-success align-items-center btn-success" type="button">
+                            <i class="fa fa-angle-right ml-2">Submit</i></button></div>
                 </div>
             </div>
         </div>
@@ -57,74 +61,56 @@
 
     <template id="questionBankTemplate">
         <form>
-    <div class="container mt-5">
-        <div class="d-flex justify-content-center row">
-            <div class="col-md-10 col-lg-10">
-                <div class="border">
-                    <div class="question bg-white p-3 border-bottom">
-                        <div class="d-flex flex-row justify-content-between align-items-center mcq">
-                            <h4>MCQ Quiz</h4>
+            <div class="container mt-5">
+                <div class="d-flex justify-content-center row">
+                    <div class="col-md-10 col-lg-10">
+                        <div class="border">
+                            <div class="question bg-white p-3 border-bottom">
+                                <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                                    <h4>MCQ Quiz</h4>
+                                </div>
+                            </div>
+                            <div class="question bg-white p-3 border-bottom">
+                                <div class="d-flex flex-row align-items-center question-title">
+                                    <h3 class="text-danger">Q.</h3>
+                                    <h5 class="quizQuestion mt-1 ml-2">What does "app" stand for in the context of
+                                        smartphones?</h5>
+                                </div>
+                                <label>Click your answer</label>
+
+                                <div class="form-check">
+                                    <input id="ifChoice1" class="form-check-input" type="radio" name="choice1"
+                                        value="choice1">
+                                    <label class="choice1">choice 1</label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="ifChoice2" class="form-check-input" type="radio" name="choice2"
+                                        value="choice2">
+                                    <label class="choice2">choice 2</label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="ifChoice3" class="form-check-input" type="radio" name="choice3"
+                                        value="choice3">
+                                    <label class="choice3">choice 3</label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="ifChoice4" class="form-check-input" type="radio" name="choice4"
+                                        value="choice4">
+                                    <label class="choice4">choice 4</label>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="question bg-white p-3 border-bottom">
-                        <div class="d-flex flex-row align-items-center question-title">
-                            <h3 class="text-danger">Q.</h3>
-                            <h5 class="quizQuestion mt-1 ml-2">What does "app" stand for in the context of smartphones?</h5>
-                        </div>
-                        <label>Click your answer</label>
-
-                        <div class="form-check">
-                            <input id="ifChoice1" class="form-check-input" type="radio" name="choice1" value="choice1">
-                            <label class="choice1">choice 1</label>
-                        </div>
-                        <div class="form-check">
-                            <input id="ifChoice2" class="form-check-input" type="radio" name="choice2" value="choice2">
-                            <label class="choice2">choice 2</label>
-                        </div>
-                        <div class="form-check">
-                            <input id="ifChoice3" class="form-check-input" type="radio" name="choice3" value="choice3">
-                            <label class="choice3">choice 3</label>
-                        </div>
-                        <div class="form-check">
-                            <input id="ifChoice4" class="form-check-input" type="radio" name="choice4" value="choice4">
-                            <label class="choice4">choice 4</label>
-                        </div>
-
-                        </div>
-
-                        <!-- <div class="ans ml-2">
-                            <label class="radio"> <input type="radio" name="choice1" value="choice1">
-                                <span class="choice1">Application</span>
-                            </label>
-                        </div>
-                        <div class="ans ml-2">
-                            <label class="radio"> <input type="radio" name="choice2" value="choice2">
-                                <span class="choice2">Apple</span>
-                            </label>
-                        </div>
-                        <div class="ans ml-2">
-                            <label class="radio"> <input type="radio" name="choice3" value="choice3">
-                                <span class="choice3">Apprehend</span>
-                            </label>
-                        </div>
-                        <div class="ans ml-2">
-                            <label class="radio"> <input type="radio" name="choice4" value="choice4">
-                                <span class="choice4">Appraisal</span>
-                            </label>
-                        </div> -->
-                    </div>
-                    
+                </div>
             </div>
-        </div>
-    </div>
-</form>
-    </div>
-</template>
+        </form>
+    </template>
 
 
 
 
-    
+
     <nav id="footerPlaceholder"></nav>
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
@@ -135,11 +121,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        <script src="./scripts/firebaseAPI.js"></script>
-        <script src="./scripts/skeleton.js"></script>
-        <script src="./scripts/authentication.js"></script>
-        <script src="./scripts/quiz.js"></script>
-        <script src="./scripts/quizlevel.js"></script>
+    <script src="./scripts/firebaseAPI.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/authentication.js"></script>
+    <script src="./scripts/quiz.js"></script>
 </body>
 
 </html>
