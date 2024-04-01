@@ -38,6 +38,7 @@ function displayQuizItems() {
 
 displayQuizItems();
 
+
 // const quizSubmit = document.getElementById('quizSubmit');
 // const ifChoice1 = document.querySelector('input[name="choice1"]:checked');
 // const ifChoice2 = document.querySelector('input[name="choice2"]:checked');

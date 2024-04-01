@@ -35,5 +35,31 @@ function displayQuizLevel() {
               });
             }
               displayQuizLevelTopics();
+              
+              function displayIcon() {
+                var iconListContainer = document.getElementById("done-box");
+                db.collection("level").doc(ID).collection("tutorial").get().then((querySnapshot) => {
+                  querySnapshot.forEach((doc) => {
+                    var iconContainer = document.createElement("div");
+                    iconContainer.className = "icon-container";
+                    var icon = document.createElement("i");
+                    icon.className = "material-icons";
+                    icon.textContent = "check_box_outline_blank";
+                    icon.style.fontSize = "24px";
+            
+                    icon.addEventListener("click", function (event) {
+                      if (icon.textContent === "check_box_outline_blank") {
+                        icon.textContent = "check_box";
+                      } else {
+                        icon.textContent = "check_box_outline_blank";
+                      }
+                    });
+            
+                    iconContainer.appendChild(icon);
+                    iconListContainer.appendChild(iconContainer);
+                  });
+                });
+              }
+              displayIcon();
 }
 displayQuizLevel();

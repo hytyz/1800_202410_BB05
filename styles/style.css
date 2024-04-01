@@ -128,6 +128,20 @@
     font-size: 4.5rem;
     font-weight: 500;
 }
+.content_grid{
+    display:grid;
+    grid-template-columns: 97% 5%;
+    grid-template-rows: 100%;
+}
+#done-box {
+    grid-column: 2; 
+    grid-row:1;
+}
+
+.icon-container {
+    margin-top: 17px;
+    margin-bottom: 33px;
+}
 
 .material-icons:nth-child(1) {
     padding-left:5%;
