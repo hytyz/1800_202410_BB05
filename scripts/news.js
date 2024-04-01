@@ -59,6 +59,6 @@ postForm.addEventListener('submit', (e) => {
     } else {
         // Redirect the user to the sign-in page if not signed in
         console.log("No user is signed in");
-        window.location.href = 'signin.html';
+        window.location.href = 'index.html';
     }
 });
