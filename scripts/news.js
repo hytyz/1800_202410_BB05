@@ -1,30 +1,3 @@
-
-      function displayQuizLevelTopic() {
-        let params = new URL( window.location.href ); //get URL of search bar
-        let arrayID = params.searchParams.get( "docID" )
-        var arrayIDSplit = arrayID.split('=')
-        var ID = arrayIDSplit[0];
-        var ID2 = arrayIDSplit[2];
-
-        console.log( ID );
-        console.log( ID2 );
-      
-      db.collection("level").doc(ID).collection("quiz").doc(ID2).get().then( doc => {
-        thisTopic = doc.data();
-        topicTitle = doc.data().title;
-        var docID = ID;  
-                    var docID2 = ID2;
-        
-        // only populate title, and image
-        document.getElementById( "topicTitle" ).innerHTML = topicTitle;
-
-        document.getElementById( "takeQuiz" ).href = "quiz.html?docID="+docID+"=docID2="+docID2;
-
-        });
-   
-  }
-    displayQuizLevelTopic();
-
 const postForm = document.getElementById('postForm');
 const postInput = document.getElementById('postInput');
 const timeline = document.getElementById('timeline');
@@ -41,20 +14,10 @@ function renderPost(doc) {
 }
 
 function getPosts() {
-    let params = new URL( window.location.href ); //get URL of search bar
-        let arrayID = params.searchParams.get( "docID" )
-        var arrayIDSplit = arrayID.split('=')
-        var ID = arrayIDSplit[0];
-        var ID2 = arrayIDSplit[2];
-
-        console.log( ID );
-        console.log( ID2 );
-      
-      db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("review").orderBy('timestamp', 'desc').get().then( snapshot => {
+    db.collection('news').orderBy('timestamp', 'desc').get().then(snapshot => {
         snapshot.docs.forEach(doc => {
             renderPost(doc);
         });
-
     });
 }
 
@@ -73,15 +36,7 @@ postForm.addEventListener('submit', (e) => {
                 var userEmail = doc.data().email;
 
                 // Add the news post to Firestore
-                let params = new URL( window.location.href ); //get URL of search bar
-                let arrayID = params.searchParams.get( "docID" )
-                var arrayIDSplit = arrayID.split('=')
-                var ID = arrayIDSplit[0];
-                var ID2 = arrayIDSplit[2];
-
-                console.log( ID );
-                console.log( ID2 );
-        db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("review").add({
+                db.collection("news").add({
                     content: content,
                     author: userName,
                     email: userEmail,

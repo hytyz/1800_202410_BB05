@@ -9,7 +9,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -24,7 +24,7 @@
 
 <body>
 
-    <!------------------------------>                                                                                                                                   
+    <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
@@ -33,60 +33,42 @@
     <br>
     <br>
     <br>
-    
-    
-    <h2 style="text-align: center;"><span id="topicTitle">this topic</span></h1>
-   
-    
-
-    <div class="container">
-    <div id="quiz-topic-info">
-        <p>Number of items: 5</p>
-        <p>Time Limit: No time limit</p>
-        <p>Number of Attempts: 5</p>
-        <p>Progress: 1/5</p>
-
-        <a id="takeQuiz" class="btn btn-primary card-href">Start the quiz!</a>
-    </div>
-    </div>
-
-    
-    <hr>
 
     <div id="quiz-topic-review">
-        <h3>How is the quiz?</h3>
-        <button class="btn btn-primary" onclick="saveTopicReviewDocumentIDAndRedirect()">Click here to share your thoughts!</button>
-        <div class="container">
-            <br>
-            <h4>Reviews:</h4>
-            <div id="details-go-here"></div>
-            <!-- Here is the container for cards with horizontal scrolling -->
-            <div class="card-container">
-                <div id="reviewCardGroup" class="row row-cols-auto">
-                    <!-- Add your card templates here -->
-                    <template id="reviewCardTemplate">
-                        <div class="card bg-secondary">
-                            <img class="card-img-top">
-                            <div class="card-body bg-light">
-                                <h5 class="title">placeholder</h5>
-                                <p class="star-rating"></p>
-                                <p class="time">placeholder</p>
-                                <p class="level">placeholder</p>
-                                <br>
-                                <p class="description">This card has supporting text below as a natural lead-in to additional content.</p>
+        <div class="container-fluid bg-light text-dark p-5">
+            <h2 style="text-align: center;"><span id="topicTitle">this topic</span></h1>
+                <div class="container">
+                    <div id="quiz-topic-info">
+                        <p>Number of items: 5</p>
+                        <p>Time Limit: No time limit</p>
+                        <p>Score: 5</p>
+                        <a id="takeQuiz" class="btn btn-primary card-href">Start the quiz!</a>
+                    </div>
+                </div>
+                <div class="container bg-light p-5">
+                    <h3 style="text-align: center;">How is the quiz?</h3>
+                    <div class="container">
+                        <h3 style="text-align: center;">Share your experience!</h3>
+                        <br>
+                        <div class="container">
+                            <form id="postForm">
+                                <textarea id="postInput" placeholder="What's on your mind?"></textarea>
+                                <button type="submit">Post</button>
+                            </form>
+                            <div id="timeline">
+                                <!-- Timeline posts will be dynamically added here -->
                             </div>
                         </div>
-                    </template>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 
-        
-    
- 
-       
-      <nav id="footerPlaceholder"></nav>
+
+
+
+
+    <nav id="footerPlaceholder"></nav>
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
@@ -96,11 +78,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        <script src="./scripts/firebaseAPI.js"></script>
-        <script src="./scripts/skeleton.js"></script>
-        <script src="./scripts/authentication.js"></script>
-        <script src="./scripts/script.js"></script>
-        <script src="./scripts/eachQuizTopic.js"></script>
+    <script src="./scripts/firebaseAPI.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/authentication.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/eachQuizTopic.js"></script>
 </body>
 
 </html>

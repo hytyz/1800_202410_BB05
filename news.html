@@ -41,12 +41,19 @@ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cD
 
     <div class="container-fluid bg-light text-dark p-5">
         <div class="container bg-light p-5">
-            <h1 style="text-align: center;">Tutorial</h1>
+            <h1 style="text-align: center;">News Timeline</h1>
               <div class="container">  
-              <h1 style="margin-bottom:2rem;">Select Level of Difficulty</h1>
-               
+                <h3 style="text-align: center;">Share your journey!</h3>
+                <br>
                 <div class="container">
-                    <div id="level-go-here" class="row row-cols-auto">
+                    <form id="postForm">
+                        <textarea id="postInput" placeholder="What's on your mind?"></textarea>
+                        <button type="submit">Post</button>
+                    </form>
+
+                    <br>
+                    <div id="timeline">
+                        <!-- Timeline posts will be dynamically added here -->
                     </div>
                 </div>
             </div>
@@ -54,23 +61,12 @@ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cD
     </div>
 
 
-    <template id="tutorialLevelTemplate">
-        <div class="card py-2 mx-2" style="width: 18rem">
-            <img class="card-image card-img-top" src=" ..." alt="..." />
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Card title</p>
-                
-                <a class="btn btn-primary card-href">Select</a>
-            </div>
-        </div>
-    </template>
 
 
 
 
     
-    <nav id ="footerPlaceholder"></nav>
+    <nav id="footerPlaceholder"></nav>
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
@@ -84,7 +80,7 @@ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cD
         <script src="./scripts/skeleton.js"></script>
         <script src="./scripts/authentication.js"></script>
         <script src="./scripts/script.js"></script>
-        <script src="./scripts/tutoriallevel.js"></script>
+        <script src="./scripts/news.js"></script>
 </body>
 
 </html>
