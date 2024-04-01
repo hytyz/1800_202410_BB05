@@ -141,6 +141,62 @@
     margin-bottom: 2rem;
 }
 
+#tutorial-topic-list a {
+    font-size: 30px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6; 
+    padding: 8px;
+}
+#tutorial-topic-info{
+    font-size: 20px;
+    text-align: center;
+    justify-content:center ;
+}
+#tutorial-topic-list a:first-child{
+    border-top: 1px solid #dee2e6; 
+}
+#tutorial-topic-list a:hover {
+    background-color: #ccdbfd; 
+}
+
+#tutorial-article {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#tutorial-article h2 {
+font-size: 40px; 
+
+}
+
+#tutorial-article h4 {
+font-size: 30px; 
+
+}
+
+#tutorial-article h5 {
+font-size: 24px; 
+
+}
+
+.material-icons{
+    cursor: pointer;
+}
+
+#done-button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    
+}
+
 #timeline {
     margin-top: 20px;
 }
@@ -201,3 +257,5 @@
         padding-bottom: 5%;
     }
 }
+
+

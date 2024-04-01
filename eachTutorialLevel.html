@@ -17,11 +17,36 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    
 
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
+    <style>
+        .content_grid{
+            display:grid;
+            grid-template-columns: 97% 5%;
+            grid-template-rows: 100%;
+        }
+
+        #tutorial-topic-list, #tutorial-topic-list-go-here {
+            grid-column: 1;
+            grid-row:1;
+        }
+
+        #done-box {
+            grid-column: 2; 
+            grid-row:1;
+        }
+
+        .icon-container {
+            margin-top: 17px;
+            margin-bottom: 33px;
+        }
+
+        
+    </style>
 <body>
 
     <!------------------------------>                                                                                                                                   
@@ -34,24 +59,36 @@
     <br>
     <br>
     
-    <h1 style="text-align: center;">Beginner Pack</h1>
+    
+    <h1 style="text-align: center;"><span id="levelName">this tutorial level</span></h1>
    
     <h3 style="text-align: center;">Select a topic</h3>
-   
-    <div class="list-group">
-        <a id="topic1" href="/quiz.html" class="list-group-item list-group-item-action">
-          Introduction to Smartphone Basics
+
+    <div class ="content_grid">
+    
+    <div id="tutorial-topic-list"></div>
+    <div id="tutorial-topic-list-go-here" class="row row-cols-auto">
+    </div>
+    <div id="done-box"></div>
+
+</div>
+        
+        <!-- <a id="topic1" href="#" class="list-group-item list-group-item-action">
+          1 Introduction to Smartphone Basics
         </a>
-        <a id="topic2" href="#" class="list-group-item list-group-item-action">Navigating your phone's Interface</a>
-        <a id="topic3" href="#" class="list-group-item list-group-item-action">Making calls and sending texts</a>
-        <a id="topic4" href="#" class="list-group-item list-group-item-action">Exploring app stores</a>
-        <a id="topic5" href="#" class="list-group-item list-group-item-action">Managing Contacts</a>
-        <a id="topic6" href="#" class="list-group-item list-group-item-action">Using the camera</a>
-        <a id="topic7" href="#" class="list-group-item list-group-item-action">Connecting to wi-fi and mobile data</a>
-        <a id="topic8" href="#" class="list-group-item list-group-item-action">Personalizing your device</a>
-        <a id="topic9" href="#" class="list-group-item list-group-item-action">Understanding notifications</a>
-        <a id="topic10" href="#" class="list-group-item list-group-item-action">Basic Troubleshooting</a>
-      </div>
+        <a id="topic2" href="#" class="list-group-item list-group-item-action">2 Navigating your phone's Interface</a>
+        <a id="topic3" href="#" class="list-group-item list-group-item-action">3 Making calls and sending texts</a>
+        <a id="topic4" href="#" class="list-group-item list-group-item-action">4 Exploring app stores</a>
+        <a id="topic5" href="#" class="list-group-item list-group-item-action">5 Managing Contacts</a>
+        <a id="topic6" href="#" class="list-group-item list-group-item-action">6 Using the camera</a>
+        <a id="topic7" href="#" class="list-group-item list-group-item-action">7 Connecting to wi-fi and mobile data</a>
+        <a id="topic8" href="#" class="list-group-item list-group-item-action">8 Personalizing your device</a>
+        <a id="topic9" href="#" class="list-group-item list-group-item-action">9 Understanding notifications</a>
+        <a id="topic10" href="#" class="list-group-item list-group-item-action">10 Basic Troubleshooting</a>
+      
+     -->
+
+    
  
        
       <nav id="footerPlaceholder"></nav>
@@ -68,6 +105,7 @@
         <script src="./scripts/skeleton.js"></script>
         <script src="./scripts/authentication.js"></script>
         <script src="./scripts/script.js"></script>
+        <script src="./scripts/eachTutorialLevel.js"></script>
 
 </body>
 
