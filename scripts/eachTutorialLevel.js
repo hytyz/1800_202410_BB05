@@ -9,14 +9,11 @@ function displayTutorialLevel() {
     .get()
     .then(doc => {
       levelName = doc.data().levelName;
-
-      // only populate title, and image
       document.getElementById("levelName").innerHTML = levelName;
-
-
     });
 
   function displayTutorialLevelTopics() {
+    
     var topicListContainer = document.getElementById("tutorial-topic-list");
     db.collection("level").doc(ID).collection("tutorial").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -29,38 +26,23 @@ function displayTutorialLevel() {
         topicLink.className = "list-group-item list-group-item-action btn";
         topicLink.textContent = doc.data().title;
 
-        topicListContainer.appendChild(topicLink);
+
+        var topicCheckbox = document.createElement("input");
+        topicCheckbox.type = "checkbox";
+        topicCheckbox.className = "topic-checkbox";
+        topicCheckbox.id = "checkbox-" + docID2;
+        topicCheckbox.setAttribute("data-docid", docID2);
+
+
+        var containerDiv = document.createElement("div");
+        containerDiv.className = "topic-container";
+        containerDiv.appendChild(topicLink);
+        containerDiv.appendChild(topicCheckbox);
+        topicListContainer.appendChild(containerDiv);
       });
     });
   }
-  displayTutorialLevelTopics();
-
-
-  function displayIcon() {
-    var iconListContainer = document.getElementById("done-box");
-    db.collection("level").doc(ID).collection("tutorial").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        var iconContainer = document.createElement("div");
-        iconContainer.className = "icon-container";
-        var icon = document.createElement("i");
-        icon.className = "material-icons";
-        icon.textContent = "check_box_outline_blank";
-        icon.style.fontSize = "24px";
-
-        icon.addEventListener("click", function (event) {
-          if (icon.textContent === "check_box_outline_blank") {
-            icon.textContent = "check_box";
-          } else {
-            icon.textContent = "check_box_outline_blank";
-          }
-        });
-
-        iconContainer.appendChild(icon);
-        iconListContainer.appendChild(iconContainer);
-      });
-    });
-  }
-  displayIcon();
+  displayTutorialLevelTopics()
 }
 displayTutorialLevel();
 
