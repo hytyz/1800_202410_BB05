@@ -25,24 +25,23 @@
   }
     displayQuizLevelTopic();
 
-    function saveTopicReviewDocumentIDAndRedirect(){
-        let params = new URL( window.location.href ); //get URL of search bar
-        let arrayID = params.searchParams.get( "docID" )
-        var arrayIDSplit = arrayID.split('=')
-        var ID = arrayIDSplit[0];
-        var ID2 = arrayIDSplit[2];
-        localStorage.setItem('quizTopicReviewDocIDMain', ID)
-        localStorage.setItem('quizTopicReviewDocID', ID2);
-        window.location.href = 'quizTopicReview.html';
-    }
-    
-    function populateReviews() {
-        console.log("test");
-        let reviewCardTemplate = document.getElementById("reviewCardTemplate");
-        let reviewCardGroup = document.getElementById("reviewCardGroup");
-    
-        let params = new URL(window.location.href); // Get the URL from the search bar
+const postForm = document.getElementById('postForm');
+const postInput = document.getElementById('postInput');
+const timeline = document.getElementById('timeline');
 
+function renderPost(doc) {
+    const data = doc.data();
+    const postDiv = document.createElement('div');
+    postDiv.classList.add('post');
+    postDiv.innerHTML = `
+        <p>${data.content}</p>
+        <small>${data.author}</small>
+    `;
+    timeline.appendChild(postDiv);
+}
+
+function getPosts() {
+    let params = new URL( window.location.href ); //get URL of search bar
         let arrayID = params.searchParams.get( "docID" )
         var arrayIDSplit = arrayID.split('=')
         var ID = arrayIDSplit[0];
@@ -50,50 +49,61 @@
 
         console.log( ID );
         console.log( ID2 );
-    
-        // Double-check: is your collection called "Reviews" or "reviews"?
-        db.collection("review")
-            .where("quizTopicReviewDocIDMain", "==", ID)
-            .where("quizTopicReviewDocID", "==", ID2)
-            .get()
-            .then((allReviews) => {
-                reviews = allReviews.docs;
-                console.log(reviews);
-                reviews.forEach((doc) => {
-                    var title = doc.data().title;
-                    var level = doc.data().level;
-                    var description = doc.data().description;
-                    var time = doc.data().timestamp.toDate();
-                    var rating = doc.data().rating; // Get the rating value
-                    console.log(rating)
-    
-                    console.log(time);
-    
-                    let reviewCard = reviewCardTemplate.content.cloneNode(true);
-                    reviewCard.querySelector(".title").innerHTML = title;
-                    reviewCard.querySelector(".time").innerHTML = new Date(
-                        time
-                    ).toLocaleString();
-                    reviewCard.querySelector(".level").innerHTML = `Level: ${level}`;
-                    reviewCard.querySelector( ".description").innerHTML = `Description: ${description}`;
-    
-                    // Populate the star rating based on the rating value
-                    
-                      // Initialize an empty string to store the star rating HTML
-                                    let starRating = "";
-                                    // This loop runs from i=0 to i<rating, where 'rating' is a variable holding the rating value.
-                    for (let i = 0; i < rating; i++) {
-                        starRating += '<span class="material-icons">star</span>';
-                    }
-                                    // After the first loop, this second loop runs from i=rating to i<5.
-                    for (let i = rating; i < 5; i++) {
-                        starRating += '<span class="material-icons">star_outline</span>';
-                    }
-                    reviewCard.querySelector(".star-rating").innerHTML = starRating;
-    
-                    reviewCardGroup.appendChild(reviewCard);
+      
+      db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("review").orderBy('timestamp', 'desc').get().then( snapshot => {
+        snapshot.docs.forEach(doc => {
+            renderPost(doc);
+        });
+
+    });
+}
+
+getPosts();
+
+postForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    var user = firebase.auth().currentUser;
+    if (user) {
+        var content = postInput.value.trim();
+        if (content !== '') {
+            var userID = user.uid;
+            // Get the current user's name and email from Firestore
+            db.collection("users").doc(user.uid).get().then(doc => {
+                var userName = doc.data().name;
+                var userEmail = doc.data().email;
+
+                // Add the news post to Firestore
+                let params = new URL( window.location.href ); //get URL of search bar
+                let arrayID = params.searchParams.get( "docID" )
+                var arrayIDSplit = arrayID.split('=')
+                var ID = arrayIDSplit[0];
+                var ID2 = arrayIDSplit[2];
+
+                console.log( ID );
+                console.log( ID2 );
+        db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("review").add({
+                    content: content,
+                    author: userName,
+                    email: userEmail,
+                    userID: userID,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                }).then(() => {
+                    // Clear the input field after posting
+                    postInput.value = '';
+                    // Clear the timeline to avoid duplicate posts
+                    timeline.innerHTML = '';
+                    // Fetch and display the updated news posts
+                    getPosts();
+                }).catch(error => {
+                    console.error('Error adding document: ', error);
                 });
+            }).catch(error => {
+                console.error('Error getting user document: ', error);
             });
+        }
+    } else {
+        // Redirect the user to the sign-in page if not signed in
+        console.log("No user is signed in");
+        window.location.href = 'index.html';
     }
-    
-    populateReviews();
+});

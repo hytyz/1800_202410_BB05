@@ -199,6 +199,7 @@ font-size: 24px;
 
 #timeline {
     margin-top: 20px;
+    font-size: 20px;
 }
 
 .post {
@@ -212,6 +213,7 @@ font-size: 24px;
     width: 100%;
     height: 100px;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 #postForm button {
@@ -221,10 +223,19 @@ font-size: 24px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 20px;
 }
 
 #postForm button:hover {
     background-color: #0056b3;
+}
+
+#quiz-topic-info {
+    font-size: 20px;
+}
+
+#takeQuiz {
+    font-size: 20px;
 }
 
 @media only screen and (max-width: 980px){
