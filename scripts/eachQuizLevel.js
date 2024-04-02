@@ -30,6 +30,13 @@ function displayQuizLevel() {
         var docID = ID;
         var docID2 = doc.id;
 
+        currentUser.get().then(userDoc => {
+          var finishedTopics = userDoc.data().finishedTopics;
+          if (finishedTopics.includes(doc.data().title)) {
+            topicCheckbox.checked = true;
+          }
+        });
+
         var topicLink = document.createElement("a");
         topicLink.href = "eachQuizTopic.html?docID=" + docID + "=docID2=" + docID2;
         topicLink.className = "list-group-item list-group-item-action btn";
