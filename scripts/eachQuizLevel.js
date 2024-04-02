@@ -31,8 +31,8 @@ function displayQuizLevel() {
         var docID2 = doc.id;
 
         currentUser.get().then(userDoc => {
-          var finishedTopics = userDoc.data().finishedTopics;
-          if (finishedTopics.includes(doc.data().title)) {
+          var finishedQuizTopics = userDoc.data().finishedQuizTopics;
+          if (finishedQuizTopics.includes(doc.data().title)) {
             topicCheckbox.checked = true;
           }
         });
