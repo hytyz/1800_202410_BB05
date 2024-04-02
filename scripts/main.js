@@ -75,8 +75,8 @@ function displayCardsDynamically(collection) {
                 if(title == "Quizzes"){
                     newcard.querySelector('a').href = "quizlevel.html?docID="+docID;
                 }
-                else if(title == "Practices"){
-                    newcard.querySelector('a').href = ".html?docID="+docID;
+                else if(title == "Progress"){
+                    newcard.querySelector('a').href = "Progress.html?docID="+docID;
                 }
                 else if(title == "News"){
                     newcard.querySelector('a').href = "news.html?docID="+docID;
