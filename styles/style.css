@@ -257,17 +257,13 @@ font-size: 24px;
     font-size: 20px; 
 
     display: block;
-    border-bottom: 1px solid #dee2e6;
     padding: 8px;
     color: #333;
     text-decoration: none; 
   }
 
-  #finished-quiz-topics-list {
-    font-size: 20px; 
-
+  #finished-quiz-topics-list { 
     display: block;
-    border-bottom: 1px solid #dee2e6;
     padding: 8px;
     color: #333;
     text-decoration: none; 
