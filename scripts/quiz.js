@@ -81,9 +81,9 @@ function checkUserAnswers(answers) {
 
           // Compare user's answer with correct answer
           if (userAns === correctAnswer) {
-              console.log(`Question ${questionId} is correct!`);
+              console.log(`Question ${doc.id} is correct!`);
           } else {
-              console.log(`Question ${questionId} is incorrect!`);
+              console.log(`Question ${doc.id} is incorrect!`);
           }
       });
   });
