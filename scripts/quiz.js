@@ -40,7 +40,6 @@ function displayQuizItems() {
 displayQuizItems();
 
 function saveUserAnswers(answers) {
-  let cardTemplate = document.getElementById("questionBankTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
   let params = new URL( window.location.href ); //get URL of search bar
   let arrayID = params.searchParams.get( "docID" )
   var arrayIDSplit = arrayID.split('=')
@@ -51,20 +50,20 @@ function saveUserAnswers(answers) {
   console.log( ID2 );
 
   // Assuming you have a collection named 'useranswers' in Firestore
-  db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("userAnswers").add({
-      answers: answers
-  })
-  .then(function(docRef) {
-      console.log("User answers saved with ID: ", docRef.id);
-  })
-  .catch(function(error) {
-      console.error("Error adding document: ", error);
-  });
+
+  db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank").get()
+  .then( allItems => {
+    allItems.forEach(doc => {
+        var userAns = doc.add({
+            userAns: userChoice
+
+        })
+    })
+    })
 }
 
 function checkUserAnswers(answers) {
 
-  let cardTemplate = document.getElementById("questionBankTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
   let params = new URL( window.location.href ); //get URL of search bar
   let arrayID = params.searchParams.get( "docID" )
   var arrayIDSplit = arrayID.split('=')
@@ -77,11 +76,11 @@ function checkUserAnswers(answers) {
   db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank")
   .get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-          const questionId = doc.id;
+          const userAns = doc.data().userAns;
           const correctAnswer = doc.data().answer;
 
           // Compare user's answer with correct answer
-          if (answers[questionId] === correctAnswer) {
+          if (userAns === correctAnswer) {
               console.log(`Question ${questionId} is correct!`);
           } else {
               console.log(`Question ${questionId} is incorrect!`);
