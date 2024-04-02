@@ -15,10 +15,11 @@ function displayQuizItems() {
     allItems.forEach(doc => {
         var quizQuestion = doc.data().question;
         console.log( quizQuestion );
-        var choice1 = doc.data().choice1;
-        var choice2 = doc.data().choice2;
-        var choice3 = doc.data().choice3;
-        var choice4 = doc.data().choice4;
+
+        var choice1 = doc.data().choices[0];
+        var choice2 = doc.data().choices[1];
+        var choice3 = doc.data().choices[2];
+        var choice4 = doc.data().choices[3];
         // quizAnswer = doc.data().answer;
 
         let newcard = cardTemplate.content.cloneNode(true)
@@ -38,6 +39,76 @@ function displayQuizItems() {
 
 displayQuizItems();
 
+function saveUserAnswers(answers) {
+  let cardTemplate = document.getElementById("questionBankTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
+  let params = new URL( window.location.href ); //get URL of search bar
+  let arrayID = params.searchParams.get( "docID" )
+  var arrayIDSplit = arrayID.split('=')
+  var ID = arrayIDSplit[0];
+  var ID2 = arrayIDSplit[2];
+
+  console.log( ID );
+  console.log( ID2 );
+
+  // Assuming you have a collection named 'useranswers' in Firestore
+  db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("userAnswers").add({
+      answers: answers
+  })
+  .then(function(docRef) {
+      console.log("User answers saved with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
+}
+
+function checkUserAnswers(answers) {
+
+  let cardTemplate = document.getElementById("questionBankTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
+  let params = new URL( window.location.href ); //get URL of search bar
+  let arrayID = params.searchParams.get( "docID" )
+  var arrayIDSplit = arrayID.split('=')
+  var ID = arrayIDSplit[0];
+  var ID2 = arrayIDSplit[2];
+
+  console.log( ID );
+  console.log( ID2 );
+  // Assuming you have a collection named 'questionbank' in Firestore
+  db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank")
+  .get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          const questionId = doc.id;
+          const correctAnswer = doc.data().answer;
+
+          // Compare user's answer with correct answer
+          if (answers[questionId] === correctAnswer) {
+              console.log(`Question ${questionId} is correct!`);
+          } else {
+              console.log(`Question ${questionId} is incorrect!`);
+          }
+      });
+  });
+}
+
+document.getElementById("quizForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const formData = new FormData(form);
+  const answers = {};
+
+  // Iterate through form elements to get selected answers
+  for (let i = 1; i <= 5; i++) {
+      const selectedAnswer = formData.get(`choices${i}`);
+      answers[`choices${i}`] = selectedAnswer;
+  }
+
+  // Save user answers to the database
+  saveUserAnswers(answers);
+
+  // Check user answers against the correct answers
+  checkUserAnswers(answers);
+});
 
 // const quizSubmit = document.getElementById('quizSubmit');
 // const ifChoice1 = document.querySelector('input[name="choice1"]:checked');
