@@ -52,7 +52,8 @@
                     <div class="d-flex flex-row justify-content-between align-items-center p-3"><button
                             class="btn btn-primary d-flex align-items-center btn-danger" type="button">
                             <i class="fa fa-angle-left mt-1 mr-1">Go</i></button><button
-                            class="btn btn-primary border-success align-items-center btn-success" type="submit">
+                            class="btn btn-primary border-success align-items-center btn-success" id="submitbutton" type="submit"
+                            onclick="FunctionVisibility()">
                             <i class="fa fa-angle-right ml-2">Submit</i></button></div>
                 </div>
             </div>
@@ -98,7 +99,7 @@
                                         value="choice4">
                                     <label class="choice4">choice 4</label>
                                 </div>
-                                <div class="quizanswer">
+                                <div class="quizanswer" id="quizanswerr" style="visibility:hidden;">
                                     <p>Answer is: <span class="answer">ans</span></p>
                                 </div>
                             </div>
@@ -128,6 +129,19 @@
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/quiz.js"></script>
+    <script>
+        function FunctionVisibility() {
+
+            document.getElementById("quizanswerr").forEach((div) => {
+                this.style.visibility = "visible";
+            });
+
+            
+            // var quizanswer = document.getElementsByClassName("quizanswer");
+            // quizanswer.setAttribute('id', 'quizanswerr');
+            // .style.visibility = "visible";
+        }
+        </script>
 </body>
 
 </html>
