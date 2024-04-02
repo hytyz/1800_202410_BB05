@@ -1,39 +1,92 @@
+var currentUser; 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    currentUser = db.collection("users").doc(user.uid);
+  } 
+});
+
 function displayQuizLevel() {
-  let params = new URL( window.location.href ); //get URL of search bar
-  let ID = params.searchParams.get( "docID" ); //get value for key "id"
-  console.log( ID );
+  let params = new URL(window.location.href); //get URL of search bar
+  let ID = params.searchParams.get("docID"); //get value for key "id"
+  console.log(ID);
 
   // doublecheck: is your collection called "Reviews" or "reviews"?
-  db.collection( "level" ) 
-      .doc( ID )
-      .get()
-      .then( doc => {
-          thisHike = doc.data();
-          levelName = doc.data().levelName;
-          
-          // only populate title, and image
-          document.getElementById( "levelName" ).innerHTML = levelName;
-          
-          
-      } );
+  db.collection("level")
+    .doc(ID)
+    .get()
+    .then(doc => {
+      thisHike = doc.data();
+      levelName = doc.data().levelName;
+      document.getElementById("levelName").innerHTML = levelName;
+    });
 
-      function displayQuizLevelTopics() {
+  function displayQuizLevelTopics() {
+
+
+    var topicListContainer = document.getElementById("quiz-topic-list");
+
+    db.collection("level").doc(ID).collection("quiz").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        var docID = ID;
+        var docID2 = doc.id;
+
+        currentUser.get().then(userDoc => {
+          var finishedTopics = userDoc.data().finishedTopics;
+          if (finishedTopics.includes(doc.data().title)) {
+            topicCheckbox.checked = true;
+          }
+        });
+
+        var topicLink = document.createElement("a");
+        topicLink.href = "eachQuizTopic.html?docID=" + docID + "=docID2=" + docID2;
+        topicLink.className = "list-group-item list-group-item-action btn";
+        topicLink.textContent = doc.data().title;
+
+        var topicCheckbox = document.createElement("input");
+        topicCheckbox.type = "checkbox";
+        topicCheckbox.className = "topic-checkbox";
+        topicCheckbox.id = "checkbox-" + docID2;
+        topicCheckbox.setAttribute("data-docid", docID2);
+        topicCheckbox.setAttribute("data-title", doc.data().title); 
+
+
+
+        var containerDiv = document.createElement("div");
+        containerDiv.className = "topic-container";
+        containerDiv.appendChild(topicLink);
+        containerDiv.appendChild(topicCheckbox);
+        topicListContainer.appendChild(containerDiv);
         
-      
-      var topicListContainer = document.getElementById("quiz-topic-list");
-      
-                db.collection("level").doc(ID).collection("quiz").get().then((querySnapshot) => {
-                  querySnapshot.forEach((doc) => {
-                    var docID = ID;  
-                    var docID2 = doc.id;
-                      var topicLink = document.createElement("a");
-                      topicLink.href= "eachQuizTopic.html?docID="+docID+"=docID2="+docID2;
-                      topicLink.className = "list-group-item list-group-item-action btn";
-                      topicLink.textContent = doc.data().title;
-                      topicListContainer.appendChild(topicLink);
-                  });
-              });
-            }
-              displayQuizLevelTopics();
+        topicCheckbox.addEventListener('change', (event) => {
+          const isChecked = event.target.checked;
+ 
+          const topicTitle = event.target.getAttribute("data-title");
+          handleCheckbox(topicTitle, isChecked);
+        });
+      });
+    });
+  }
+  displayQuizLevelTopics();
 }
 displayQuizLevel();
+
+
+function handleCheckbox(topicTitle, isChecked) {
+  if (isChecked) {
+    currentUser.update({
+      finishedQuizTopics: firebase.firestore.FieldValue.arrayUnion(topicTitle)
+    }).then(() => {
+      console.log("Topic added");
+    }).catch((error) => {
+      console.error("Error updating document:", error);
+    });
+  } else {
+    currentUser.update({
+      finishedQuizTopics: firebase.firestore.FieldValue.arrayRemove(topicTitle)
+    }).then(() => {
+      console.log("Topic removed from user's selected topics.");
+    }).catch((error) => {
+      console.error("Error updating document:", error);
+    });
+  }
+}

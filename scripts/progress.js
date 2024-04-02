@@ -1,42 +1,36 @@
-var subcollectionsList = document.getElementById('subcollectionsList');
-
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-        var userId = user.uid;
-        var subcollectionNames = ["tutorial", "practice", "quiz"];
+      var userId = user.uid;
+      var userDocRef = db.collection("users").doc(userId);
+  
+      userDocRef.get().then(userDoc => {
+        if (userDoc.exists) {
+          const finishedTopics = userDoc.data().finishedTopics;
+          const finishedQuizTopics = userDoc.data().finishedQuizTopics ;
+  
+          displayFinishedTopics(finishedTopics, 'Tutorial');
+          displayFinishedTopics(finishedQuizTopics, 'Quiz');
+        } else {
+          console.log("User document does not exist!");
+        }
+      }).catch(error => {
+        console.error("Error fetching user data:", error);
+      });
+    } else {
+      console.log("No user is signed in.");
+    }
+  });
+  
+  function displayFinishedTopics(topicsArray, topicType) {
+    var topicsListContainerId = (topicType === 'Tutorial') ? 'finished-topics-list' : 'finished-quiz-topics-list';
+    var topicsListContainer = document.getElementById(topicsListContainerId);
+    
 
-        subcollectionNames.forEach(function(subcollectionName) {
-            
-            var subcollectionHeading = document.createElement('h3');
-            subcollectionHeading.textContent = subcollectionName.charAt(0).toUpperCase() + subcollectionName.slice(1);
-            
-            subcollectionsList.appendChild(subcollectionHeading);
-
-            var listGroupDiv = document.createElement('div');
-            listGroupDiv.classList.add('list-group');
-            subcollectionsList.appendChild(listGroupDiv);
-
-
-            db.collection('users').doc(userId).collection(subcollectionName).get().then(function(querySnapshot) {
-                if (!querySnapshot.empty) {
-                    querySnapshot.forEach(function(doc) {
-                        var listItem = document.createElement('a');
-                        listItem.href = '#';
-                        listItem.classList.add('list-group-item', 'list-group-item-action');
-                        var data = doc.data();
-                        listItem.textContent = data.exampleField; 
-                        listGroupDiv.appendChild(listItem);
-                    });
-                } else {
-                    var listItem = document.createElement('a');
-                    listItem.href = '#';
-                    listItem.classList.add('list-group-item', 'list-group-item-action', 'disabled');
-                    listItem.textContent = "No items found in " + subcollectionName;
-                    listGroupDiv.appendChild(listItem);
-                }
-            }).catch(function(error) {
-                console.log('Error getting documents from subcollection:', error);
-            });
-        });
-    } 
-});
+  
+    topicsArray.forEach(topicTitle => {
+      var listItem = document.createElement("li");
+      listItem.textContent = topicTitle;
+      topicsListContainer.appendChild(listItem);
+    });
+  }
+  

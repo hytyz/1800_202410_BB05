@@ -15,10 +15,11 @@ function displayQuizItems() {
     allItems.forEach(doc => {
         var quizQuestion = doc.data().question;
         console.log( quizQuestion );
-        var choice1 = doc.data().choice1;
-        var choice2 = doc.data().choice2;
-        var choice3 = doc.data().choice3;
-        var choice4 = doc.data().choice4;
+
+        var choice1 = doc.data().choices[0];
+        var choice2 = doc.data().choices[1];
+        var choice3 = doc.data().choices[2];
+        var choice4 = doc.data().choices[3];
         // quizAnswer = doc.data().answer;
 
         let newcard = cardTemplate.content.cloneNode(true)
@@ -31,175 +32,139 @@ function displayQuizItems() {
         newcard.querySelector('.choice4').innerHTML = choice4;
 
         document.getElementById("questionBank-go-here").appendChild(newcard);
-
-
     })
     })
 
 }
 
-displayQuizItems(); 
+displayQuizItems();
 
-// function myAnswers() {
-//   let cardTemplate = document.getElementById("questionBankTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
-//     let params = new URL( window.location.href ); //get URL of search bar
-//     let arrayID = params.searchParams.get( "docID" )
-//     var arrayIDSplit = arrayID.split('=')
-//     var ID = arrayIDSplit[0];
-//     var ID2 = arrayIDSplit[2];
+function saveUserAnswers(answers) {
+  let params = new URL( window.location.href ); //get URL of search bar
+  let arrayID = params.searchParams.get( "docID" )
+  var arrayIDSplit = arrayID.split('=')
+  var ID = arrayIDSplit[0];
+  var ID2 = arrayIDSplit[2];
 
-//     console.log( ID );
-//     console.log( ID2 );
-  
-//   db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank").get()
-//   .then( allItems => {
-//     allItems.forEach(doc => {
-//   console.log("inside write review");
+  console.log( ID );
+  console.log( ID2 );
 
+  // Assuming you have a collection named 'useranswers' in Firestore
 
+  db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank").get()
+  .then( allItems => {
+    allItems.forEach(doc => {
+        var userAns = doc.add({
+            userAns: userChoice
 
+        })
+    })
+    })
+}
 
-//   let ifChoice1 = document.querySelector('input[name="choice1"]:checked').value;
-//   let ifChoice2 = document.querySelector('input[name="choice2"]:checked').value;
-//   let ifChoice3 = document.querySelector('input[name="choice3"]:checked').value;
-//   let ifChoice4 = document.querySelector('input[name="choice4"]:checked').value;
+function checkUserAnswers(answers) {
 
-//   let totalScore = 0;
-//   let score1 = 0;
-//   let score2 = 0;
-//   let score3 = 0;
-//   let score4 = 0;
-//   let score = 0;
+  let params = new URL( window.location.href ); //get URL of search bar
+  let arrayID = params.searchParams.get( "docID" )
+  var arrayIDSplit = arrayID.split('=')
+  var ID = arrayIDSplit[0];
+  var ID2 = arrayIDSplit[2];
 
+  console.log( ID );
+  console.log( ID2 );
+  // Assuming you have a collection named 'questionbank' in Firestore
+  db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank")
+  .get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          const userAns = doc.data().userAns;
+          const correctAnswer = doc.data().answer;
 
-//   let qadb = db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank");
-
-//   let qadb1 = qadb.where('answer','==',ifChoice1);
-//   let qadb2 = qadb.where('answer','==',ifChoice2);
-//   let qadb3 = qadb.where('answer','==',ifChoice3);
-//   let qadb4 = qadb.where('answer','==',ifChoice4);
-
-
-//   if(qadb1){
-//     score1++;
-//   }
-//   else if(qadb2){
-//     score2++;
-//   }
-//   else if(qadb3){
-//     score3++;
-//   }
-//   else if(qadb4){
-//     score4++;
-//   }
-//   else{
-//     score = 0;
-//   }
-
-//   totalScore = score1 + score2 +score3 +score4 +score;
-
-
-// })
-// })
-
-// var user = firebase.auth().currentUser;
-// if (user) {
-//    var currentUser = db.collection("users").doc(user.uid);
-//    var userID = user.uid;
-
-//     //  Get the document for the current user.
-//   db.collection("quizanswers").add({
-//      levelID: ID,
-//       topicID: ID2,
-//       choice1: score1,
-//      choice2: score2,
-//     choice3: score3,
-//      choice4: score4,
-//        userID: userID, // Include the rating in the review
-//       timestamp: firebase.firestore.FieldValue.serverTimestamp()
-//   }).then(() => {
-//       window.location.href = "thanks.html"; // Redirect to the thanks page
-//   });
-//  } else {
-//   console.log("No user is signed in");
-//   window.location.href = 'review.html';
-// }
-
-
-
-// }
-
-function myAnswers() {
-  // Retrieve user choices from form inputs
-  // let ifChoice1 = document.querySelector('input[name="choice1"]:checked').value;
-  let ifChoice2 = document.querySelector('input[name="choice2"]:checked').value;
-  let ifChoice3 = document.querySelector('input[name="choice3"]:checked').value;
-  let ifChoice4 = document.querySelector('input[name="choice4"]:checked').value;
-
-  let ifChoice1Element = document.querySelector('input[name="choice1"]:checked');
-  let ifChoice1 = ifChoice1Element ? ifChoice1Element.value : ''; // If element exists, get its value; otherwise, use empty string
-
-  console.log(ifChoice1);
-
-  // Define variables to store scores
-  let score1 = 0;
-  let score2 = 0;
-  let score3 = 0;
-  let score4 = 0;
-
-  // Retrieve level and topic IDs from URL
-  let params = new URL(window.location.href);
-  let arrayID = params.searchParams.get("docID");
-  let arrayIDSplit = arrayID.split('=');
-  let ID = arrayIDSplit[0];
-  let ID2 = arrayIDSplit[2];
-
-  // Get a reference to the question bank collection
-  let qadb = db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank");
-
-  // Query the question bank for each choice and update scores accordingly
-  qadb.where('answer', '==', ifChoice1).get().then((snapshot) => {
-      if (!snapshot.empty) score1++;
-      return qadb.where('answer', '==', ifChoice2).get();
-  }).then((snapshot) => {
-      if (!snapshot.empty) score2++;
-      return qadb.where('answer', '==', ifChoice3).get();
-  }).then((snapshot) => {
-      if (!snapshot.empty) score3++;
-      return qadb.where('answer', '==', ifChoice4).get();
-  }).then((snapshot) => {
-      if (!snapshot.empty) score4++;
-
-      // Calculate total score
-      let totalScore = score1 + score2 + score3 + score4;
-
-      // Get current user ID
-      let user = firebase.auth().currentUser;
-      if (user) {
-          let userID = user.uid;
-          // Store quiz answers in the database
-          db.collection("quizanswers").add({
-              levelID: ID,
-              topicID: ID2,
-              choice1: score1,
-              choice2: score2,
-              choice3: score3,
-              choice4: score4,
-              userID: userID,
-              timestamp: firebase.firestore.FieldValue.serverTimestamp()
-          }).then(() => {
-              window.location.href = "thanks.html"; // Redirect to the thanks page
-          }).catch((error) => {
-              console.error("Error writing document: ", error);
-          });
-      } else {
-          console.log("No user is signed in");
-          window.location.href = 'review.html';
-      }
-  }).catch((error) => {
-      console.error("Error getting documents: ", error);
+          // Compare user's answer with correct answer
+          if (userAns === correctAnswer) {
+              console.log(`Question ${doc.id} is correct!`);
+          } else {
+              console.log(`Question ${doc.id} is incorrect!`);
+          }
+      });
   });
 }
 
+document.getElementById("quizForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const formData = new FormData(form);
+  const answers = {};
+
+  // Iterate through form elements to get selected answers
+  for (let i = 1; i <= 5; i++) {
+      const selectedAnswer = formData.get(`choices${i}`);
+      answers[`choices${i}`] = selectedAnswer;
+  }
+
+  // Save user answers to the database
+  saveUserAnswers(answers);
+
+  // Check user answers against the correct answers
+  checkUserAnswers(answers);
+});
+
+// const quizSubmit = document.getElementById('quizSubmit');
+// const ifChoice1 = document.querySelector('input[name="choice1"]:checked');
+// const ifChoice2 = document.querySelector('input[name="choice2"]:checked');
+// const ifChoice3 = document.querySelector('input[name="choice3"]:checked');
+// const ifChoice4 = document.querySelector('input[name="choice4"]:checked');
+
+// quizSubmit.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     var user = firebase.auth().currentUser;
+//     if (user) {
+//         var ifChoice1 = ifChoice1.value;
+//         var ifChoice2 = ifChoice2.value;
+//         var ifChoice3 = ifChoice3.value;
+//         var ifChoice4 = ifChoice4.value;
 
 
+//         if (ifChoice1 !== '' || ifChoice2 !== '' || ifChoice3 !== '' || ifChoice4 !== '') {
+//             var userID = user.uid;
+//             db.collection("users").doc(user.uid).get().then(doc => {
+//                 var userName = doc.data().name;
+//                 var userEmail = doc.data().email;
+
+//                 let params = new URL(window.location.href);
+//                 let arrayID = params.searchParams.get("docID");
+//                 var arrayIDSplit = arrayID.split('=')
+//                 var ID = arrayIDSplit[0];
+//                 var ID2 = arrayIDSplit[2];
+
+//                 db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank")
+//                     .get().then(allItems => {
+//                         allItems.forEach(doc => {
+//                             // Add user's answers to Firestore
+//                             doc.ref.collection("userAnswers").add({
+//                                 levelID: ID,
+//                                 topicID: ID2,
+//                                 userName: userName,
+//                                 userEmail: userEmail,
+//                                 ifChoice1: ifChoice1,
+//                                 ifChoice2: ifChoice2,
+//                                 ifChoice3: ifChoice3,
+//                                 ifChoice4: ifChoice4,
+//                                 userID: userID,
+//                                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
+//                             }).then(() => {
+//                                 console.log("User answers added successfully");
+//                             }).catch(error => {
+//                                 console.error("Error adding user answers: ", error);
+//                             });
+//                         })
+//                     }).catch(error => {
+//                         console.error("Error getting quiz questions: ", error);
+//                     });
+//             })
+//         }
+//     } else {
+//         console.log("No user is signed in");
+//         window.location.href = 'index.html';
+//     }
+// });

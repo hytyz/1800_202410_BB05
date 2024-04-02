@@ -129,6 +129,20 @@
     font-size: 4.5rem;
     font-weight: 500;
 }
+.content_grid{
+    display:grid;
+    grid-template-columns: 97% 5%;
+    grid-template-rows: 100%;
+}
+#done-box {
+    grid-column: 2; 
+    grid-row:1;
+}
+
+.icon-container {
+    margin-top: 17px;
+    margin-bottom: 33px;
+}
 
 .material-icons:nth-child(1) {
     padding-left:5%;
@@ -239,6 +253,26 @@ font-size: 24px;
     font-size: 20px;
 }
 
+#finished-topics-list {
+    font-size: 20px; 
+
+    display: block;
+    border-bottom: 1px solid #dee2e6;
+    padding: 8px;
+    color: #333;
+    text-decoration: none; 
+  }
+
+  #finished-quiz-topics-list {
+    font-size: 20px; 
+
+    display: block;
+    border-bottom: 1px solid #dee2e6;
+    padding: 8px;
+    color: #333;
+    text-decoration: none; 
+  }
+
 @media only screen and (max-width: 980px){
 
     .row:nth-child(4){
@@ -268,6 +302,8 @@ font-size: 24px;
         font-weight: 600;
         padding-bottom: 5%;
     }
+
+
 }
 
 

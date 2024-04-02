@@ -24,28 +24,30 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <style>
-        .content_grid{
-            display:grid;
-            grid-template-columns: 97% 5%;
-            grid-template-rows: 100%;
-        }
 
-        #tutorial-topic-list, #tutorial-topic-list-go-here {
-            grid-column: 1;
-            grid-row:1;
-        }
+/* code referred from https://css-tricks.com/how-to-stack-elements-in-css/ */
+.topic-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
 
-        #done-box {
-            grid-column: 2; 
-            grid-row:1;
-        }
+.list-group-item {
+    flex-grow: 1;
+    z-index: 1; 
+}
 
-        .icon-container {
-            margin-top: 17px;
-            margin-bottom: 33px;
-        }
-
+.topic-checkbox {
+    position: absolute; 
+    right: 0; 
+    top: 50%; 
+    transform: scale(1.5) translateY(-50%); 
+    margin-right: 30px;
+    z-index: 2; 
+}
         
+
     </style>
 <body>
 
@@ -59,19 +61,18 @@
     <br>
     <br>
     
-    
     <h1 style="text-align: center;"><span id="levelName">this tutorial level</span></h1>
    
     <h3 style="text-align: center;">Select a topic</h3>
 
-    <div class ="content_grid">
+
+
     
     <div id="tutorial-topic-list"></div>
-    <div id="tutorial-topic-list-go-here" class="row row-cols-auto">
-    </div>
-    <div id="done-box"></div>
 
-</div>
+
+
+
         
         <!-- <a id="topic1" href="#" class="list-group-item list-group-item-action">
           1 Introduction to Smartphone Basics

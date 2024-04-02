@@ -34,28 +34,26 @@
     <br>
     <br>
 
-    <div id="quiz-topic-review">
+    <div id="quiz-result">
         <div class="container-fluid bg-light text-dark p-5">
-            <h2 style="text-align: center;"><span id="topicTitle">this topic</span></h2>
+            <h1 style="text-align: center;">CONGRATULATIONS!!!</h1>
+            <h2 style="text-align: center;">You have finished the quiz!</h2>
+            <br>
                 <div class="container">
-                    <div id="quiz-topic-info">
-                        <p>Number of items: 5</p>
-                        <p>Time Limit: No time limit</p>
-                        <p>Score: 5</p>
-                        <a id="takeQuiz" class="btn btn-primary card-href">Start the quiz!</a>
+                    <div id="quiz-result-info" style="text-align: center;">
+                        <p>Your score is: </p>
+                        <p><span id="quizScore">final score</p></span>
+                        <p>out of: </p>
+                        <p><span id="quizTotalItems">total items</p></span>
+                        <a id="takeQuiz" class="btn btn-primary card-href">Go Back</a>
                     </div>
                 </div>
                 <div class="container bg-light p-5">
-                    <h3 style="text-align: center;">How is the quiz?</h3>
+                    <h3 style="text-align: center;">Review the answers</h3>
                     <div class="container">
-                        <h3 style="text-align: center;">Share your experience!</h3>
                         <br>
                         <div class="container">
-                            <form id="postForm">
-                                <textarea id="postInput" placeholder="What's on your mind?"></textarea>
-                                <button type="submit">Post</button>
-                            </form>
-                            <div id="timeline">
+                            <div id="quizAnswers">
                                 <!-- Timeline posts will be dynamically added here -->
                             </div>
                         </div>
