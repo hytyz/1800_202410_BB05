@@ -16,6 +16,8 @@ function displayQuizItems() {
         var quizQuestion = doc.data().question;
         console.log( quizQuestion );
 
+        var quizAnswer = doc.data().answer;
+
         var choice1 = doc.data().choices[0];
         var choice2 = doc.data().choices[1];
         var choice3 = doc.data().choices[2];
@@ -30,6 +32,8 @@ function displayQuizItems() {
         newcard.querySelector('.choice2').innerHTML = choice2;
         newcard.querySelector('.choice3').innerHTML = choice3;
         newcard.querySelector('.choice4').innerHTML = choice4;
+        newcard.querySelector('.answer').innerHTML = quizAnswer;
+
 
         document.getElementById("questionBank-go-here").appendChild(newcard);
     })
