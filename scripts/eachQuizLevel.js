@@ -76,6 +76,7 @@ function handleCheckbox(topicTitle, isChecked) {
     currentUser.update({
       finishedQuizTopics: firebase.firestore.FieldValue.arrayUnion(topicTitle)
     }).then(() => {
+      alert("Quiz marked complete")
       console.log("Topic added");
     }).catch((error) => {
       console.error("Error updating document:", error);
@@ -84,6 +85,7 @@ function handleCheckbox(topicTitle, isChecked) {
     currentUser.update({
       finishedQuizTopics: firebase.firestore.FieldValue.arrayRemove(topicTitle)
     }).then(() => {
+      alert("Quiz marked incomplete")
       console.log("Topic removed from user's selected topics.");
     }).catch((error) => {
       console.error("Error updating document:", error);
