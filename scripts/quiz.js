@@ -41,7 +41,8 @@ function displayQuizItems() {
 
 }
 
-displayQuizItems();
+
+
 
 // function displayQuizItems() {
 //     let cardTemplate = document.getElementById("questionBankTemplate");
