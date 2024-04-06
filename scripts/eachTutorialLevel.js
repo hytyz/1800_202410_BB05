@@ -63,7 +63,17 @@ function displayTutorialLevel() {
       });
     });
   }
-  displayTutorialLevelTopics()
+  displayTutorialLevelTopics();
+  var doneButtonContainer = document.getElementById("goBack-button");
+    var doneButton = document.createElement("button");
+    doneButton.classList.add("btn", "btn-primary", "btn-lg", "btn-danger");
+    doneButton.textContent = "Go Back";
+    doneButtonContainer.appendChild(doneButton);
+
+    doneButton.addEventListener("click", function () {
+        
+        window.location.href = "quizlevel.html";
+    });
 }
 displayTutorialLevel();
 
