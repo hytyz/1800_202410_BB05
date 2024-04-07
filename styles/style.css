@@ -105,6 +105,10 @@
     height: auto;
   }
 
+  .quizanswer {
+    display: none;
+}
+
 
 #quiz-topic-list a {
     font-size: 30px;
@@ -277,6 +281,27 @@ font-size: 24px;
     color: #333;
     text-decoration: none; 
   }
+
+  .quiz-score-alert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 2px solid #333;
+    padding: 20px;
+    z-index: 1000;
+}
+
+#closeQuizScoreAlert {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
 
 @media only screen and (max-width: 200px){
 

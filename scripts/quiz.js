@@ -1,47 +1,148 @@
-
 function displayQuizItems() {
-    let cardTemplate = document.getElementById("questionBankTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
-    let params = new URL( window.location.href ); //get URL of search bar
-    let arrayID = params.searchParams.get( "docID" )
+    let cardTemplate = document.getElementById("questionBankTemplate");
+    let params = new URL(window.location.href);
+    let arrayID = params.searchParams.get("docID")
     var arrayIDSplit = arrayID.split('=')
     var ID = arrayIDSplit[0];
     var ID2 = arrayIDSplit[2];
-
-    console.log( ID );
-    console.log( ID2 );
   
-  db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank").get()
-  .then( allItems => {
-    allItems.forEach(doc => {
-        var quizQuestion = doc.data().question;
-        console.log( quizQuestion );
+    db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank").get()
+    .then(allItems => {
+        allItems.forEach(doc => {
+            let newCard = cardTemplate.content.cloneNode(true);
+  
+            // Set the question text
+            newCard.querySelector('.quizQuestion').textContent = doc.data().question;
+  
+            // Set the choices and their values
+            doc.data().choices.forEach((choice, index) => {
+                let choiceLabel = newCard.querySelector('.choice' + (index + 1));
+                let choiceInput = choiceLabel.previousElementSibling;
+                choiceInput.value = choice; // Set the input value to the choice text
+                choiceLabel.textContent = choice; // Set the label text to the choice text
+            });
+  
+            // Store the correct answer in a hidden span
+            newCard.querySelector('.answer').textContent = doc.data().answer;
+  
+            document.getElementById("questionBank-go-here").appendChild(newCard);
+        })
+    });
 
-        var quizAnswer = doc.data().answer;
+    var doneButtonContainer = document.getElementById("goBack-button");
+        doneButtonContainer.addEventListener("click", function () {
+            
+            window.location.href = "eachQuizTopic.html?docID=" + ID + "=docID=" +ID2;
+        })
 
-        var choice1 = doc.data().choices[0];
-        var choice2 = doc.data().choices[1];
-        var choice3 = doc.data().choices[2];
-        var choice4 = doc.data().choices[3];
-        // quizAnswer = doc.data().answer;
+  }
+  
+  displayQuizItems();
 
-        let newcard = cardTemplate.content.cloneNode(true)
+  
+
+  
+function quizSubmit() {
+    let questionContainers = document.querySelectorAll('.qaNum-go-here');
+    let score = 0;
+    let questionResults = []; // Array to store detailed results
+  
+    questionContainers.forEach((container, index) => {
+      // Retrieve the selected answer's value, if there's a selected answer
+      let selectedAnswer = container.querySelector('input[type="radio"]:checked');
+      let correctAnswer = container.querySelector('.answer').textContent.trim(); // Correct answer for this question
+  
+      if (selectedAnswer) {
+        let userAnswer = selectedAnswer.value.trim(); // User's answer for this question
+        if (userAnswer === correctAnswer) {
+          score++; // Increment score if the answer is correct
+          questionResults.push({index: index + 1, correct: true});
+          console.log(`Question ${index + 1}: Correct`);
+        } else {
+        questionResults.push({index: index + 1, correct: false, userAnswer, correctAnswer});
+          console.log(`Question ${index + 1}: Incorrect, selected: ${userAnswer}, correct: ${correctAnswer}`);
+        }
+      } else {
+        questionResults.push({index: index + 1, notAnswered: true});
+      }
+  
+      // Show the correct answer div
+      container.querySelector('.quizanswer').style.visibility = 'visible';
+    });
+  
+    console.log(`User's score: ${score}/${questionContainers.length}`);
+    displayScore(score, questionContainers.length, questionResults);
+  }
+  
+  function displayScore(score, total, questionResults) {
+    // Update the UI to display the user's score
+    // alert(`You scored ${score} out of ${total}`);
+    // Construct the detailed results message
+    let detailedResults = '';
+    questionResults.forEach(result => {
+        if (result.correct) {
+            detailedResults += `Question ${result.index}: Correct\n`;
+        } else if (result.notAnswered) {
+            detailedResults += `Question ${result.index}: Not answered\n`;
+        } else {
+            detailedResults += `Question ${result.index}: Incorrect, \nselected: ${result.userAnswer}, \ncorrect: ${result.correctAnswer}\n`;
+        }
+    });
+
+    // Display the score and detailed results in one alert
+    let alertMessage = `Congratulations!\n\nYou scored ${score} out of ${total}\n\nDetailed results:\n${detailedResults}`;
+    alert(alertMessage);
+  }
+  
+  // Attach the event listener to the submit button
+  document.getElementById("submitbutton").addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent the default form submission
+    quizSubmit();
+  });
+  
+// function displayQuizItems() {
+//     let cardTemplate = document.getElementById("questionBankTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
+//     let params = new URL( window.location.href ); //get URL of search bar
+//     let arrayID = params.searchParams.get( "docID" )
+//     var arrayIDSplit = arrayID.split('=')
+//     var ID = arrayIDSplit[0];
+//     var ID2 = arrayIDSplit[2];
+
+//     console.log( ID );
+//     console.log( ID2 );
+  
+//   db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank").get()
+//   .then( allItems => {
+//     allItems.forEach(doc => {
+//         var quizQuestion = doc.data().question;
+//         console.log( quizQuestion );
+
+//         var quizAnswer = doc.data().answer;
+
+//         var choice1 = doc.data().choices[0];
+//         var choice2 = doc.data().choices[1];
+//         var choice3 = doc.data().choices[2];
+//         var choice4 = doc.data().choices[3];
+//         // quizAnswer = doc.data().answer;
+
+//         let newcard = cardTemplate.content.cloneNode(true)
         
-        newcard.querySelector('.quizQuestion').innerHTML = quizQuestion;
-                // newcard.querySelector('.card-length').innerHTML = hikeLength +"km";
-        newcard.querySelector('.choice1').innerHTML = choice1;
-        newcard.querySelector('.choice2').innerHTML = choice2;
-        newcard.querySelector('.choice3').innerHTML = choice3;
-        newcard.querySelector('.choice4').innerHTML = choice4;
-        newcard.querySelector('.answer').innerHTML = quizAnswer;
+//         newcard.querySelector('.quizQuestion').innerHTML = quizQuestion;
+//                 // newcard.querySelector('.card-length').innerHTML = hikeLength +"km";
+//         newcard.querySelector('.choice1').innerHTML = choice1;
+//         newcard.querySelector('.choice2').innerHTML = choice2;
+//         newcard.querySelector('.choice3').innerHTML = choice3;
+//         newcard.querySelector('.choice4').innerHTML = choice4;
+//         newcard.querySelector('.answer').innerHTML = quizAnswer;
 
 
-        document.getElementById("questionBank-go-here").appendChild(newcard);
-    })
-    })
+//         document.getElementById("questionBank-go-here").appendChild(newcard);
+//     })
+//     })
 
-}
+// }
 
-displayQuizItems();
+// displayQuizItems();
 
 // function displayQuizItems() {
 //     let cardTemplate = document.getElementById("questionBankTemplate");
