@@ -1,10 +1,11 @@
-function displayQuizItems() {
-    let cardTemplate = document.getElementById("questionBankTemplate");
-    let params = new URL(window.location.href);
+let params = new URL(window.location.href);
     let arrayID = params.searchParams.get("docID")
     var arrayIDSplit = arrayID.split('=')
     var ID = arrayIDSplit[0];
     var ID2 = arrayIDSplit[2];
+    
+function displayQuizItems() {
+    let cardTemplate = document.getElementById("questionBankTemplate");
   
     db.collection("level").doc(ID).collection("quiz").doc(ID2).collection("questionBank").get()
     .then(allItems => {
@@ -71,8 +72,72 @@ function quizSubmit() {
     });
   
     console.log(`User's score: ${score}/${questionContainers.length}`);
-    displayScore(score, questionContainers.length, questionResults);
+    let total = questionContainers.length;
+
+    var user = firebase.auth().currentUser;
+    if (user) {
+        var currentUser = db.collection("users").doc(user.uid);
+        var userID = user.uid;
+
+        if(ID=="beginner"){
+            currentUser.update({
+                quizResultBeginner: {
+                    topic : ID2,
+                    userID: userID,
+                    score: score,
+                    total: total,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                }
+                }).then(() => {
+                    console.log("saved");
+                    displayScore(score, questionContainers.length, questionResults);
+                });
+        } else if (ID=="elementary"){
+            currentUser.update({
+                quizResultElementary: {
+                    topic : ID2,
+                    userID: userID,
+                    score: score,
+                    total: total,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                }
+                }).then(() => {
+                    console.log("saved");
+                    displayScore(score, questionContainers.length, questionResults);
+                });
+        } else if (ID=="intermediate"){
+            currentUser.update({
+                quizResultIntermediate: {
+                    topic : ID2,
+                    userID: userID,
+                    score: score,
+                    total: total,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                }
+                }).then(() => {
+                    console.log("saved");
+                    displayScore(score, questionContainers.length, questionResults);
+                });
+            } else if (ID=="advanced"){
+                currentUser.update({
+                    quizResultAdvanced: {
+                        topic : ID2,
+                        userID: userID,
+                        score: score,
+                        total: total,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    }
+                    }).then(() => {
+                        console.log("saved");
+                        displayScore(score, questionContainers.length, questionResults);
+                    });
+                } else {
+                alert("No user is signed in");
+                window.location.href = 'index.html';
+            }
+
   }
+}
   
   function displayScore(score, total, questionResults) {
     // Update the UI to display the user's score
@@ -81,18 +146,30 @@ function quizSubmit() {
     let detailedResults = '';
     questionResults.forEach(result => {
         if (result.correct) {
-            detailedResults += `Question ${result.index}: Correct\n`;
+            detailedResults += `Question ${result.index}: Correct,\n`;
         } else if (result.notAnswered) {
             detailedResults += `Question ${result.index}: Not answered\n`;
         } else {
-            detailedResults += `Question ${result.index}: Incorrect, \nselected: ${result.userAnswer}, \ncorrect: ${result.correctAnswer}\n`;
+            detailedResults += `Question ${result.index}: Incorrect, \nSelected: ${result.userAnswer}, \nCorrect: ${result.correctAnswer}\n`;
         }
     });
 
     // Display the score and detailed results in one alert
-    let alertMessage = `Congratulations!\n\nYou scored ${score} out of ${total}\n\nDetailed results:\n${detailedResults}`;
-    alert(alertMessage);
+    let alertMessage = `You scored ${score} out of ${total}.\n${detailedResults}`;
+    showAlert(alertMessage);
   }
+
+  function showAlert(alertMessage) {
+    let customAlert = document.getElementById("customAlert");
+    let customAlertMessage = document.getElementById("customAlertMessage");
+
+    customAlertMessage.innerHTML = alertMessage.replace(/\n/g, '<br>');
+    customAlert.style.display = "block";
+
+    document.getElementById("customAlertClose").addEventListener("click", function() {
+        customAlert.style.display = "none";
+    });
+}
   
   // Attach the event listener to the submit button
   document.getElementById("submitbutton").addEventListener('click', (e) => {
