@@ -84,6 +84,9 @@ function displayCardsDynamically(collection) {
                 else if(title == "Tutorials"){
                     newcard.querySelector('a').href = "tutoriallevel.html?docID="+docID;
                 }
+                else if(title == "Leaderboard"){
+                    newcard.querySelector('a').href = "leaderboard.html?docID="+docID;
+                }
                 else{
                     newcard.querySelector('a').href = ".html?docID="+docID;
                 }
