@@ -325,6 +325,24 @@ ul {
     }
 
 
+#finished-topics-list li,
+#finished-quiz-topics-list li {
+  font-size: 16px; 
+}
+
+.list-group-item {
+    flex-grow: 1; 
+    margin-right: 15px; 
+}
+.topic-checkbox {
+    transform: scale(2); 
+    margin-right: 10px; 
+}
+
+
+
+  
+
 @media only screen and (max-width: 200px){
 
     .row:nth-child(4){
@@ -354,28 +372,6 @@ ul {
         font-weight: 600;
         padding-bottom: 5%;
     }
-    #finished-topics-list li,
-    #finished-quiz-topics-list li {
-      font-size: 16px; 
-    }
-
-    .list-group-item {
-        flex-grow: 1; 
-        margin-right: 15px; 
-    }
-    .topic-checkbox {
-        transform: scale(2); 
-        margin-right: 10px; 
-    }
-    body {
-        margin: 0;
-        padding-bottom: 70px;
-    }
-    footer {
-
-        height: 70px; 
-
-      }
 
 }
 
