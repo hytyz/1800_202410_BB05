@@ -34,6 +34,7 @@
 
 
 
+
 .nav-link {
     color: black !important;
     font-weight: 500 !important;
@@ -156,6 +157,10 @@
     margin-bottom: 2rem;
 }
 
+#quizForm{
+    margin-top: 5rem;
+}
+
 #tutorial-topic-list a {
     font-size: 30px;
     text-align: center;
@@ -276,7 +281,7 @@ font-size: 24px;
     text-decoration: none; 
   }
 
-@media only screen and (max-width: 980px){
+@media only screen and (max-width: 200px){
 
     .row:nth-child(4){
         margin: 0 100px 100px 100px;
@@ -327,6 +332,7 @@ font-size: 24px;
         height: 70px; 
 
       }
+
 }
 
 
