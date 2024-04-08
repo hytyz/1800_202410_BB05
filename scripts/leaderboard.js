@@ -8,30 +8,30 @@ function generateLeaderboard() {
     };
 
     // Query the database to retrieve scores for each level
-    db.collection("users").get().then(querySnapshot => {
+    return db.collection("users").get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
             let data = doc.data();
             if (data.quizResultBeginner) {
                 leaderboard.beginner.push({
-                    userID: doc.id,
+                    userID: data.name,
                     score: data.quizResultBeginner.score
                 });
             }
             if (data.quizResultElementary) {
                 leaderboard.elementary.push({
-                    userID: doc.id,
+                    userID: data.name,
                     score: data.quizResultElementary.score
                 });
             }
             if (data.quizResultIntermediate) {
                 leaderboard.intermediate.push({
-                    userID: doc.id,
+                    userID: data.name,
                     score: data.quizResultIntermediate.score
                 });
             }
             if (data.quizResultAdvanced) {
                 leaderboard.advanced.push({
-                    userID: doc.id,
+                    userID: data.name,
                     score: data.quizResultAdvanced.score
                 });
             }
@@ -43,12 +43,32 @@ function generateLeaderboard() {
         }
 
         // Now you have the leaderboard object containing scores for each level sorted in descending order
-        console.log(leaderboard);
-        // You can use this data to display the leaderboard on your webpage
+        return leaderboard;
     }).catch(error => {
         console.error("Error retrieving leaderboard:", error);
+        return null; // Return null in case of an error
     });
 }
 
-// Call the function to generate the leaderboard
-generateLeaderboard();
+// Call the function to generate the leaderboard and handle the returned object
+generateLeaderboard().then(leaderboard => {
+    // Check if the leaderboard is not null
+    if (leaderboard) {
+        // Loop through each level and populate the corresponding table
+        for (let level in leaderboard) {
+            let table = document.getElementById(`${level}-leaderboard`);
+            let tbody = table.querySelector('tbody');
+
+            leaderboard[level].forEach(entry => {
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${entry.userID}</td>
+                    <td>${entry.score}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+    } else {
+        console.error("Failed to generate leaderboard");
+    }
+});
