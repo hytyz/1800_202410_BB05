@@ -168,7 +168,7 @@ function quizSubmit() {
 
     document.getElementById("customAlertClose").addEventListener("click", function() {
         customAlert.style.display = "none";
-        window.location.href = "eachQuizLevel.html?docID=" + ID;
+        window.location.href = "eachQuizTopic.html?docID=" + ID + "=docID=" +ID2;
 
     });
 }
