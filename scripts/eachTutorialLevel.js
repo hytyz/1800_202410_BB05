@@ -72,7 +72,7 @@ function displayTutorialLevel() {
 
     doneButton.addEventListener("click", function () {
         
-        window.location.href = "quizlevel.html";
+        window.location.href = "tutoriallevel.html";
     });
 }
 displayTutorialLevel();
