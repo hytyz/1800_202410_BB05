@@ -1,21 +1,19 @@
-var currentUser; 
-firebase.auth().onAuthStateChanged(function(user) {
+var currentUser;
+firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     currentUser = db.collection("users").doc(user.uid);
-  } 
+  }
 });
 
 function displayQuizLevel() {
-  let params = new URL(window.location.href); //get URL of search bar
-  let ID = params.searchParams.get("docID"); //get value for key "id"
+  let params = new URL(window.location.href);
+  let ID = params.searchParams.get("docID");
   console.log(ID);
 
-  // doublecheck: is your collection called "Reviews" or "reviews"?
   db.collection("level")
     .doc(ID)
     .get()
     .then(doc => {
-      thisHike = doc.data();
       levelName = doc.data().levelName;
       document.getElementById("levelName").innerHTML = levelName;
     });
@@ -47,7 +45,7 @@ function displayQuizLevel() {
         topicCheckbox.className = "topic-checkbox";
         topicCheckbox.id = "checkbox-" + docID2;
         topicCheckbox.setAttribute("data-docid", docID2);
-        topicCheckbox.setAttribute("data-title", doc.data().title); 
+        topicCheckbox.setAttribute("data-title", doc.data().title);
 
 
 
@@ -56,10 +54,10 @@ function displayQuizLevel() {
         containerDiv.appendChild(topicLink);
         containerDiv.appendChild(topicCheckbox);
         topicListContainer.appendChild(containerDiv);
-        
+
         topicCheckbox.addEventListener('change', (event) => {
           const isChecked = event.target.checked;
- 
+
           const topicTitle = event.target.getAttribute("data-title");
           handleCheckbox(topicTitle, isChecked);
         });
@@ -69,15 +67,15 @@ function displayQuizLevel() {
   displayQuizLevelTopics();
 
   var doneButtonContainer = document.getElementById("goBack-button");
-    var doneButton = document.createElement("button");
-    doneButton.classList.add("btn", "btn-primary", "btn-lg", "btn-danger");
-    doneButton.textContent = "Go Back";
-    doneButtonContainer.appendChild(doneButton);
+  var doneButton = document.createElement("button");
+  doneButton.classList.add("btn", "btn-primary", "btn-lg", "btn-danger");
+  doneButton.textContent = "Go Back";
+  doneButtonContainer.appendChild(doneButton);
 
-    doneButton.addEventListener("click", function () {
-        
-        window.location.href = "quizlevel.html";
-    });
+  doneButton.addEventListener("click", function () {
+
+    window.location.href = "quizlevel.html";
+  });
 }
 displayQuizLevel();
 

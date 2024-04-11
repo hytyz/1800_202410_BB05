@@ -17,20 +17,23 @@
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css">
     <style>
-    .correct-answer {
-    color: green; /* Or use a background-color to highlight the entire choice */
-}
+        .correct-answer {
+            color: green;
+            /* Or use a background-color to highlight the entire choice */
+        }
 
-    .wrong-answer {
-    color: red; /* Or use a background-color to highlight the entire choice */
-}
+        .wrong-answer {
+            color: red;
+            /* Or use a background-color to highlight the entire choice */
+        }
 
-    #user-score {
-    margin-top: 20px; /* Adjust spacing as needed */
-    font-size: 20px; /* Adjust font size as needed */
-    /* Additional styles for the score alert */
-}
-
+        #user-score {
+            margin-top: 20px;
+            /* Adjust spacing as needed */
+            font-size: 20px;
+            /* Adjust font size as needed */
+            /* Additional styles for the score alert */
+        }
     </style>
 
 </head>
@@ -66,8 +69,9 @@
                     <div id="questionBank-go-here" class="row-cols-auto">
                     </div>
                     <br>
-                    <div class="d-flex flex-row justify-content-between align-items-center p-3"><button id="goBack-button"
-                            class="btn btn-primary d-flex align-items-center btn-danger" type="button">
+                    <div class="d-flex flex-row justify-content-between align-items-center p-3"><button
+                            id="goBack-button" class="btn btn-primary d-flex align-items-center btn-danger"
+                            type="button">
                             <i class="fa fa-angle-left mt-1 mr-1">Go Back</i></button><button id="submitbutton"
                             class="btn btn-primary border-success align-items-center btn-success" type="submit">
                             <i class="fa fa-angle-right ml-2">Submit</i></button></div><br><br><br><br>
@@ -84,7 +88,8 @@
                         <div class="border">
                             <div class="question bg-white p-3 border-bottom">
                                 <div class="d-flex flex-row justify-content-between align-items-center mcq">
-                                    <h4>MCQ <h4 class="quizNumber"></h4></h4>
+                                    <h4>MCQ <h4 class="quizNumber"></h4>
+                                    </h4>
                                 </div>
                             </div>
                             <div class="question bg-white p-3 border-bottom">
@@ -127,19 +132,15 @@
         </form>
     </template>
 
-
     <div id="customAlert" class="custom-alert">
         <div class="custom-alert-content">
             <img id="congrats-image" src=" ./images/congrats.jpg" alt="congrats" />
             <span id="customAlertMessage">
-                
+
             </span><br>
             <button id="customAlertClose">Close</button>
         </div>
     </div>
-
-
-
 
 
     <nav id="footerPlaceholder"></nav>
@@ -163,12 +164,12 @@
                 this.style.visibility = "visible";
             });
 
-            
+
             // var quizanswer = document.getElementsByClassName("quizanswer");
             // quizanswer.setAttribute('id', 'quizanswerr');
             // .style.visibility = "visible";
         }
-        </script>
+    </script>
 </body>
 
 </html>
