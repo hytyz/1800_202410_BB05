@@ -1,18 +1,19 @@
-.navbar-brand{
-    color:#4278f5 ;
+.navbar-brand {
+    color: #4278f5;
     font-weight: 600;
-    position:relative;
+    position: relative;
     font-size: 25px !important;
 }
-.bg-lightblue{
+
+.bg-lightblue {
     background-color: #ccdbfd;
 }
 
-.login-button{
-    background-color:#acbea9;
-    color:black;
+.login-button {
+    background-color: #acbea9;
+    color: black;
     font-size: 14px;
-    padding:8px 20px;
+    padding: 8px 20px;
     border-radius: 50px;
     text-decoration: none;
     transition: 0.3s background-color;
@@ -22,13 +23,14 @@
     background-color: #4278f5;
 }
 
-.navbar-toggler{
+.navbar-toggler {
     border: none !important;
     font-size: 1.25rem;
-    
+
 }
 
-.navbar-toggler:focus, .btn-close:focus {
+.navbar-toggler:focus,
+.btn-close:focus {
     box-shadow: none !important;
 }
 
@@ -36,18 +38,19 @@
     color: black !important;
     font-weight: 500 !important;
     position: relative !important;
-    
+
 }
 
-.startedbtn{
+.startedbtn {
     background-color: #338fc2;
-    color:black;
+    color: black;
     font-size: 15px;
-    padding:8px 20px;
+    padding: 8px 20px;
     border-radius: 50px;
     text-decoration: none;
     transition: 0.3s background-color;
 }
+
 .col-md-4 {
     margin-bottom: 0;
 }
@@ -56,9 +59,8 @@
     color: grey !important;
 }
 
-
 .nav-link::before {
-    content: ""; 
+    content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -70,24 +72,22 @@
     transition: width 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-
 .nav-link:hover::before {
     width: 100%;
-    visibility: visible; 
+    visibility: visible;
 }
-
 
 .card {
     margin-bottom: 10px;
     margin-bottom: 2rem;
     font-size: 1rem;
-} 
+}
 
-.card-body > h5{
+.card-body>h5 {
     font-size: 2rem;
 }
 
-.card-body > .btn {
+.card-body>.btn {
     width: 100%;
     height: 20%;
     font-size: 80%;
@@ -96,49 +96,54 @@
     margin: 0 0 10px 0;
 }
 
-.card > img {
-    height:50%;
+.card>img {
+    height: 50%;
 }
 
 .responsive {
     width: 100%;
     height: auto;
-  }
-
-  .quizanswer {
-    display: none;
 }
 
+.quizanswer {
+    display: none;
+}
 
 #quiz-topic-list a {
     font-size: 30px;
     text-align: center;
-    border-bottom: 1px solid #dee2e6; 
+    border-bottom: 1px solid #dee2e6;
     padding: 8px;
 }
-#quiz-topic-info{
+
+#quiz-topic-info {
     font-size: 20px;
     text-align: center;
-    justify-content:center ;
+    justify-content: center;
 }
-#quiz-topic-list a:first-child{
-    border-top: 1px solid #dee2e6; 
+
+#quiz-topic-list a:first-child {
+    border-top: 1px solid #dee2e6;
 }
+
 #quiz-topic-list a:hover {
-    background-color: #ccdbfd; 
+    background-color: #ccdbfd;
 }
+
 .display-4 {
     font-size: 4.5rem;
     font-weight: 500;
 }
-.content_grid{
-    display:grid;
+
+.content_grid {
+    display: grid;
     grid-template-columns: 97% 5%;
     grid-template-rows: 100%;
 }
+
 #done-box {
-    grid-column: 2; 
-    grid-row:1;
+    grid-column: 2;
+    grid-row: 1;
 }
 
 .icon-container {
@@ -147,37 +152,40 @@
 }
 
 .material-icons:nth-child(1) {
-    padding-left:5%;
+    padding-left: 5%;
 }
 
 .material-icons:nth-child(4) {
-    padding-right:5%;
+    padding-right: 5%;
 }
 
 .p-5 {
     margin-bottom: 2rem;
 }
 
-#quizForm{
+#quizForm {
     margin-top: 5rem;
 }
 
 #tutorial-topic-list a {
     font-size: 30px;
     text-align: center;
-    border-bottom: 1px solid #dee2e6; 
+    border-bottom: 1px solid #dee2e6;
     padding: 8px;
 }
-#tutorial-topic-info{
+
+#tutorial-topic-info {
     font-size: 20px;
     text-align: center;
-    justify-content:center ;
+    justify-content: center;
 }
-#tutorial-topic-list a:first-child{
-    border-top: 1px solid #dee2e6; 
+
+#tutorial-topic-list a:first-child {
+    border-top: 1px solid #dee2e6;
 }
+
 #tutorial-topic-list a:hover {
-    background-color: #ccdbfd; 
+    background-color: #ccdbfd;
 }
 
 #tutorial-article {
@@ -191,21 +199,18 @@
 }
 
 #tutorial-article h2 {
-font-size: 40px; 
-
+    font-size: 40px;
 }
 
 #tutorial-article h4 {
-font-size: 30px; 
-
+    font-size: 30px;
 }
 
 #tutorial-article h5 {
-font-size: 24px; 
-
+    font-size: 24px;
 }
 
-.material-icons{
+.material-icons {
     cursor: pointer;
 }
 
@@ -214,10 +219,9 @@ font-size: 24px;
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-
-    
 }
-#goBack-button{
+
+#goBack-button {
     margin-top: 20px;
     display: flex;
     align-items: center;
@@ -267,23 +271,21 @@ font-size: 24px;
 }
 
 #finished-topics-list {
-    font-size: 20px; 
-
+    font-size: 20px;
     display: block;
     padding: 8px;
     color: #333;
-    text-decoration: none; 
-  }
+    text-decoration: none;
+}
 
-  #finished-quiz-topics-list { 
+#finished-quiz-topics-list {
     display: block;
     padding: 8px;
     color: #333;
-    text-decoration: none; 
-  }
+    text-decoration: none;
+}
 
- 
-  .custom-alert {
+.custom-alert {
     display: none;
     position: fixed;
     top: 50%;
@@ -310,42 +312,39 @@ font-size: 24px;
     border: none;
     cursor: pointer;
 }
-ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
 
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
 #finished-topics-list li,
 #finished-quiz-topics-list li {
-  font-size: 26px; 
+    font-size: 26px;
 }
 
 .list-group-item {
-    flex-grow: 1; 
-    margin-right: 15px; 
+    flex-grow: 1;
+    margin-right: 15px;
 }
+
 .topic-checkbox {
-    transform: scale(2); 
-    margin-right: 10px; 
+    transform: scale(2);
+    margin-right: 10px;
 }
-
-
-
-  
 
 #customAlertClose:hover {
     background-color: #0056b3;
 }
 
-#congrats-image{
+#congrats-image {
     width: 150px;
 }
 
-@media only screen and (max-width: 200px){
+@media only screen and (max-width: 200px) {
 
-    .row:nth-child(4){
+    .row:nth-child(4) {
         margin: 0 100px 100px 100px;
     }
 
@@ -353,19 +352,18 @@ ul {
         padding-bottom: 1rem !important;
     }
 
-    
     .card {
         margin-bottom: 10px;
         width: 200% !important;
         margin-bottom: 2rem;
         font-size: 2rem;
-    } 
+    }
 
-    .card-body > h5{
+    .card-body>h5 {
         font-size: 3rem;
     }
 
-    .card-body > .btn {
+    .card-body>.btn {
         width: 100%;
         height: 20%;
         font-size: 80%;
@@ -374,5 +372,3 @@ ul {
     }
 
 }
-
-
