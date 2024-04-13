@@ -68,17 +68,17 @@ Content of the project folder:
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
-    /congrats.jpg            # for quiz completion
-    /level1.jpg              # beginner level picture 
-    /level2.jpg              # elementary level picture
-    /level3.jpg              # intermmediate level picture
-    /level4.jpg              # advanced level picture
-    /MENU01.jpg              # menu picture for tutorial
-    /MENU02.jpg              # menu picture for quiz
-    /MENU03.jpg              # menu picture for news
-    /MENU04.jpg              # menu picture for progress
-    /MENU05.jpg              # menu picture for leaderboard
-    /robot.png               #logo
+    /congrats.jpg            # for quiz completion. Got from google search online
+    /level1.jpg              # beginner level picture.  Got from google search online
+    /level2.jpg              # elementary level picture. Got from google search online
+    /level3.jpg              # intermmediate level picture. Got from google search online
+    /level4.jpg              # advanced level picture. Got from google search online
+    /MENU01.jpg              # menu picture for tutorial. Got from google search online
+    /MENU02.jpg              # menu picture for quiz. Got from google search online
+    /MENU03.jpg              # menu picture for news. Got from google search online
+    /MENU04.jpg              # menu picture for progress. Got from google search online
+    /MENU05.jpg              # menu picture for leaderboard. Got from google search online
+    /robot.png               #logo. Got from google search online
 ├── scripts                  # Folder for scripts
     /authentication.js       #  User authentication
     /eachQuizLevel.js        # For selecting quiz level page
